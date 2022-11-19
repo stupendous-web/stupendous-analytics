@@ -3,7 +3,6 @@ import { useGlobal } from "../lib/context";
 import axios from "axios";
 
 import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -71,7 +70,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

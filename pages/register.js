@@ -3,7 +3,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -99,7 +98,6 @@ export default function Register() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
