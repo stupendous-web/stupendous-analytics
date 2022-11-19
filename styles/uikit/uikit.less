@@ -1,0 +1,126 @@
+@import "components/_import.less";
+@import 'https://use.typekit.net/aqk5kto.css';
+
+@global-font-family:                            roboto, sans-serif;
+@base-h1-line-height:                           1;
+@base-h2-line-height:                           1;
+@global-font-size:                              16px;
+@global-line-height:                            1.5;
+@global-2xlarge-font-size:                      1rem;
+@global-xlarge-font-size:                       1rem;
+@global-large-font-size:                        1rem;
+@global-medium-font-size:                       1rem;
+
+@global-color:                                  #262626; // Gray 90
+@global-emphasis-color:                         #161616; // Gray 100
+@global-muted-color:                            #525252; // Gray 70
+@global-link-color:                             #d02670; // Magenta 70
+@global-link-hover-color:                       #d02670; // Magenta 70
+@global-muted-background:                       #f4f4f4; // Gray 10
+@global-primary-background:                     #d02670; // Magenta 70
+@global-secondary-background:                   #2a0a18; // Magenta 100
+@global-success-background:                     #0e6027; // Green 70
+@global-danger-background:                      #a2191f; // Red 70
+@global-border:                                 #e0e0e0; // Gray 20
+
+@global-margin:                                 1rem;
+@global-small-margin:                           1rem;
+@global-medium-margin:                          1rem;
+@global-large-margin:                           1rem;
+@global-xlarge-margin:                          1rem;
+@global-gutter:                                 1rem;
+@global-small-gutter:                           1rem;
+@global-medium-gutter:                          1rem;
+@global-large-gutter:                           1rem;
+
+// Material Design
+
+@global-small-box-shadow:                       0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20); // 1dp
+@global-medium-box-shadow:                      0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20); // 2dp
+@global-large-box-shadow:                       0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20); // 3dp
+@global-xlarge-box-shadow:                      0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20); // 4dp
+
+a:hover {
+  text-decoration: none;
+}
+pre {
+  border-radius: @global-font-size / 4;
+}
+
+// Button
+
+.uk-button {
+  border-radius: @global-font-size / 4;
+  box-shadow: @global-small-box-shadow;
+}
+.uk-button:hover {
+  box-shadow: @global-medium-box-shadow;
+}
+
+// Card
+
+.uk-card {
+  border-radius: @global-font-size / 4;
+  box-shadow: @global-small-box-shadow;
+}
+
+// Alert
+
+.uk-alert {
+  border-radius: @global-font-size / 4;
+}
+
+// Form
+
+.uk-input, .uk-select {
+  border-radius: @global-font-size / 4;
+}
+
+// Navbar
+
+@navbar-background:                             @global-primary-background;
+@navbar-nav-item-height:                        4rem;
+.uk-navbar {
+  z-index: 980;
+}
+
+// Table
+
+@table-row-active-background:                   #e5f6ff; // Cyan 10
+
+// Dropdown
+
+.uk-dropdown {
+  box-shadow: @global-large-box-shadow;
+}
+
+/**********/
+/* Custom */
+/**********/
+
+.speech-bubble-1 {
+  border-top-right-radius: @global-font-size / 4;
+  border-bottom-right-radius: @global-font-size;
+  border-bottom-left-radius: @global-font-size / 4;
+
+}
+.speech-bubble-2 {
+  border-bottom-left-radius: @global-font-size;
+  border-top-left-radius: @global-font-size / 4;
+  border-bottom-right-radius: @global-font-size / 4;
+}
+
+// Datepicker
+
+.rdrDefinedRangesWrapper, .rdrStaticRange, .rdrCalendarWrapper {
+  background-color: @global-muted-background !important;
+}
+
+
+
+
+
+
+
+
+
