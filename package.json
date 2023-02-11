@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap --config next.config.js",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -17,15 +17,15 @@
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.6",
     "eslint": "8.28.0",
-    "eslint-config-next": "13.0.4",
+    "eslint-config-next": "^13.1.6",
     "mongodb": "^4.12.0",
-    "next": "13.0.4",
+    "next": "^13.1.6",
     "next-sitemap": "^3.1.32",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
     "react-date-range": "^1.4.0",
-    "react-dom": "18.2.0",
+    "react-dom": "^18.2.0",
     "remixicon": "^2.5.0",
-    "uikit": "^3.15.13"
+    "uikit": "^3.15.24"
   }
 }
