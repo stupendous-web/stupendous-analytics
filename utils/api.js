@@ -6,9 +6,7 @@ export const getPageviews = async (params) => {
     .get("/api/pageviews", {
       params: params,
     })
-    .then((response) => {
-      return response.data;
-    })
+    .then((response) => response.data)
     .catch((error) => {
       UIkit.notification({
         message: "There was an error. Some of your data is missing.",

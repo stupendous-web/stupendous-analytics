@@ -17,6 +17,12 @@ export default function Referrers() {
       const data = groupedPageviews?.map((pageview) => {
         return {
           host: pageview[0],
+          fullReferrers: groupBy(
+            pageview[1].filter((fullReferrer) =>
+              fullReferrer.referrer.includes(pageview[0])
+            ),
+            `referrer`
+          ),
           sessions: groupBy(pageview[1], "session")?.length - 1,
           pageviews: pageview[1]?.length - 1,
         };
@@ -46,7 +52,25 @@ export default function Referrers() {
               {rows?.map((row) => {
                 return (
                   <tr key={row.hsot}>
-                    <td>{row.host} </td>
+                    <td>
+                      <div className={"uk-inline"}>
+                        <div>
+                          {row.host}{" "}
+                          {row.fullReferrers.length > 1 && (
+                            <a>
+                              <i className={"ri-arrow-drop-down-fill"} />
+                            </a>
+                          )}
+                        </div>
+                        {row.fullReferrers.length > 1 && (
+                          <div data-uk-dropdown={"mode: click"}>
+                            {row.fullReferrers.map((item) => (
+                              <div key={item[0]}>{item[0]}</div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </td>
                     <td>{row.sessions}</td>
                     <td>{row.pageviews}</td>
                   </tr>
