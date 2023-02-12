@@ -42,7 +42,10 @@ export default function Register() {
           Web
         </title>
       </Head>
-      <div className={"uk-grid-collapse uk-flex-middle"} data-uk-grid={""}>
+      <div
+        className={"uk-section-secondary uk-grid-collapse uk-flex-middle"}
+        data-uk-grid={""}
+      >
         <div
           className={
             "uk-background-primary uk-width-2-3@s uk-visible@s uk-flex uk-flex-center uk-flex-middle"
