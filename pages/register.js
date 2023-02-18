@@ -5,7 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 
-import login from "../images/login.svg";
+import Navigation from "../components/Navigation";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -42,79 +42,66 @@ export default function Register() {
           Web
         </title>
       </Head>
+      <Navigation />
       <div
-        className={"uk-section-secondary uk-grid-collapse uk-flex-middle"}
-        data-uk-grid={""}
+        className={"uk-section uk-section-default uk-flex uk-flex-middle"}
+        data-uk-height-viewport={"offset-top: true"}
       >
-        <div
-          className={
-            "uk-background-primary uk-width-2-3@s uk-visible@s uk-flex uk-flex-center uk-flex-middle"
-          }
-          data-uk-height-viewport={""}
-        >
-          <div className={"uk-section"}>
-            <div className={"uk-container"}>
-              <Image src={login} alt={"Login"} />
-            </div>
-          </div>
-        </div>
-        <div className={"uk-width-1-3@s"}>
-          <div className={"uk-section"}>
-            <div className={"uk-container"}>
-              <h1>Join for FREE!</h1>
-              <form onSubmit={handleSubmit}>
-                <div className={"uk-margin"}>
-                  <label className={"uk-form-label"}>Name</label>
-                  <input
-                    type={"text"}
-                    value={name}
-                    className={"uk-input"}
-                    onChange={(event) => setName(event.target.value)}
-                    required
-                  />
-                </div>
-                <div className={"uk-margin"}>
-                  <label className={"uk-form-label"}>Email</label>
-                  <input
-                    type={"email"}
-                    value={email}
-                    className={"uk-input"}
-                    onChange={(event) => setEmail(event.target.value)}
-                    required
-                  />
-                </div>
-                <div className={"uk-margin"}>
-                  <label className={"uk-form-label"}>Password</label>
-                  <input
-                    type={"password"}
-                    value={password}
-                    className={"uk-input"}
-                    onChange={(event) => setPassword(event.target.value)}
-                    minLength={8}
-                    required
-                  />
-                </div>
-                {error && (
-                  <div className={"uk-alert-danger"} data-uk-alert={""}>
-                    <p>
-                      {error} Please try again or email{" "}
-                      <Link
-                        href={"mailto:topher@stupendousweb.com"}
-                        legacyBehavior
-                      >
-                        <a>topher@stupendousweb.com</a>
-                      </Link>{" "}
-                      for help.
-                    </p>
-                  </div>
-                )}
+        <div className={"uk-container uk-container-xsmall"}>
+          <div class={"uk-card uk-card-primary uk-card-body"}>
+            <h1>Join for FREE!</h1>
+            <form onSubmit={handleSubmit}>
+              <div className={"uk-margin"}>
+                <label className={"uk-form-label"}>Name</label>
                 <input
-                  type={"submit"}
-                  value={"Let's Go!"}
-                  className={"uk-button uk-button-primary"}
+                  type={"text"}
+                  value={name}
+                  className={"uk-input"}
+                  onChange={(event) => setName(event.target.value)}
+                  required
                 />
-              </form>
-            </div>
+              </div>
+              <div className={"uk-margin"}>
+                <label className={"uk-form-label"}>Email</label>
+                <input
+                  type={"email"}
+                  value={email}
+                  className={"uk-input"}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                />
+              </div>
+              <div className={"uk-margin"}>
+                <label className={"uk-form-label"}>Password</label>
+                <input
+                  type={"password"}
+                  value={password}
+                  className={"uk-input"}
+                  onChange={(event) => setPassword(event.target.value)}
+                  minLength={8}
+                  required
+                />
+              </div>
+              {error && (
+                <div className={"uk-alert-danger"} data-uk-alert={""}>
+                  <p>
+                    {error} Please try again or email{" "}
+                    <Link
+                      href={"mailto:topher@stupendousweb.com"}
+                      legacyBehavior
+                    >
+                      <a>topher@stupendousweb.com</a>
+                    </Link>{" "}
+                    for help.
+                  </p>
+                </div>
+              )}
+              <input
+                type={"submit"}
+                value={"Let's Go!"}
+                className={"uk-button uk-button-primary"}
+              />
+            </form>
           </div>
         </div>
       </div>

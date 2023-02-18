@@ -770,7 +770,7 @@ a.uk-link-reset,
   color: #d02670 !important;
 }
 .uk-list-secondary > ::before {
-  color: #2a0a18 !important;
+  color: #000 !important;
 }
 /* Image bullet modifier
  ========================================================================== */
@@ -1919,18 +1919,18 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-button-secondary {
-  background-color: #2a0a18;
+  background-color: #000;
   color: #fff;
 }
 /* Hover */
 .uk-button-secondary:hover {
-  background-color: #15050c;
+  background-color: #000000;
   color: #fff;
 }
 /* OnClick + Active */
 .uk-button-secondary:active,
 .uk-button-secondary.uk-active {
-  background-color: #010000;
+  background-color: #000000;
   color: #fff;
 }
 /*
@@ -2177,7 +2177,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-section-secondary {
-  background: #2a0a18;
+  background: #000;
 }
 /* Overlap modifier
  ========================================================================== */
@@ -2435,7 +2435,7 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-tile-secondary {
-  background-color: #2a0a18;
+  background-color: #000;
 }
 /* ========================================================================
    Component: Card
@@ -2561,14 +2561,14 @@ select.uk-form-width-xsmall {
  * Secondary
  */
 .uk-card-secondary {
-  background-color: #2a0a18;
+  background-color: #000;
   color: #fff;
 }
 .uk-card-secondary .uk-card-title {
   color: #fff;
 }
 .uk-card-secondary.uk-card-hover:hover {
-  background-color: #15050c;
+  background-color: #000000;
 }
 /* Size modifier
  ========================================================================== */
@@ -2683,7 +2683,7 @@ select.uk-form-width-xsmall {
  */
 .uk-marker {
   padding: 5px;
-  background: #2a0a18;
+  background: #000;
   color: #fff;
 }
 /* Hover */
@@ -2867,7 +2867,7 @@ select.uk-form-width-xsmall {
  * Primary
  */
 .uk-overlay-primary {
-  background: rgba(42, 10, 24, 0.8);
+  background: rgba(0, 0, 0, 0.8);
 }
 /* ========================================================================
    Component: Article
@@ -3711,7 +3711,7 @@ select.uk-form-width-xsmall {
   box-sizing: border-box;
   width: 270px;
   padding: 1rem 1rem;
-  background: #2a0a18;
+  background: #000;
   /* 3 */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -4755,7 +4755,7 @@ ul.uk-nav-sub {
 /* Container
  ========================================================================== */
 .uk-navbar-container:not(.uk-navbar-transparent) {
-  background: #d02670;
+  background: #f4f4f4;
 }
 /* Groups
  ========================================================================== */
@@ -6699,7 +6699,7 @@ ul.uk-nav-sub {
   color: #d02670 !important;
 }
 .uk-text-secondary {
-  color: #2a0a18 !important;
+  color: #000 !important;
 }
 .uk-text-success {
   color: #0e6027 !important;
@@ -7028,7 +7028,7 @@ iframe[data-uk-cover] {
   background-color: #d02670;
 }
 .uk-background-secondary {
-  background-color: #2a0a18;
+  background-color: #000;
 }
 /* Size
  ========================================================================== */

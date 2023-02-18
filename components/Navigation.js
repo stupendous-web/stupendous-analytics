@@ -11,7 +11,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className={"uk-navbar-container uk-light uk-box-shadow-medium"}
+      className={"uk-navbar-container uk-box-shadow-medium"}
       data-uk-navbar={""}
     >
       {router.pathname === "/app/dashboard" ? (

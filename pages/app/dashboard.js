@@ -60,7 +60,7 @@ export default function Dashboard() {
               <div className={"uk-width-1-2"}>
                 <div
                   className={
-                    "uk-card uk-card-secondary uk-card-body uk-text-center"
+                    "uk-card uk-card-primary uk-card-body uk-text-center"
                   }
                 >
                   <h1 className={"uk-heading-large uk-margin-remove"}>
@@ -72,7 +72,7 @@ export default function Dashboard() {
               <div className={"uk-width-1-2"}>
                 <div
                   className={
-                    "uk-card uk-card-secondary uk-card-body uk-text-center"
+                    "uk-card uk-card-primary uk-card-body uk-text-center"
                   }
                 >
                   <h1 className={"uk-heading-large uk-margin-remove"}>
