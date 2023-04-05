@@ -26,7 +26,7 @@ export default function Dashboard() {
   } = useGlobal();
 
   const { data: session } = useSession();
-  const site = session?.user?.email;
+  const site = session?.user?.sites?.[0]?._id;
 
   useEffect(() => {
     host
