@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { useSession } from "next-auth/react";
+import gravatar from "gravatar";
 
 export default function SideNavigation() {
   const { data: session } = useSession();
@@ -31,13 +33,13 @@ export default function SideNavigation() {
         data-uk-navbar={""}
       >
         <div className={"uk-width-1-1 uk-navbar-item"}>
-          {session?.user?.picture && (
+          <Link href={"https://en.gravatar.com/connect"} target={"_blank"}>
             <img
-              src={session?.user?.picture}
+              src={gravatar.url(session?.user?.email)}
               className={"uk-border-circle"}
               style={{ width: "2rem" }}
             />
-          )}
+          </Link>
         </div>
       </div>
 
