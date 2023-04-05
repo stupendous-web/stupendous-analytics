@@ -4,20 +4,14 @@ import SideNavigation from "./SideNavigation";
 export default function Layout({ children }) {
   return (
     <>
-      <div
-        className={"uk-grid-collapse uk-position-fixed uk-width-1-1"}
-        data-uk-grid={""}
-      >
+      <Navigation />
+      <div data-uk-grid={""}>
+        <SideNavigation />
         <div
-          className={"uk-section-secondary uk-width-auto uk-box-shadow-large"}
+          className={"uk-width-expand"}
+          style={{ height: "calc(100vh - 4rem)", overflow: "auto" }}
         >
-          <SideNavigation />
-        </div>
-        <div className={"uk-width-expand"}>
-          <Navigation />
-          <div style={{ height: "calc(100vh - 4rem)", overflow: "auto" }}>
-            {children}
-          </div>
+          {children}
         </div>
       </div>
     </>

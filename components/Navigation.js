@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 import Filters from "./Filters";
+import gravatar from "gravatar";
 
 export default function Navigation() {
   const router = useRouter();
@@ -10,12 +11,18 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   return (
-    <nav
-      className={"uk-navbar-container uk-box-shadow-medium"}
-      data-uk-navbar={""}
-    >
+    <nav className={"uk-navbar-container"} data-uk-navbar={""}>
       {router.pathname === "/app/dashboard" ? (
         <div className={"uk-navbar-left"}>
+          <div className={"uk-navbar-item"} style={{ width: "63px" }}>
+            <Link href={"https://en.gravatar.com/connect"} target={"_blank"}>
+              <img
+                src={gravatar.url(session?.user?.email)}
+                className={"uk-border-circle"}
+                style={{ width: "2rem" }}
+              />
+            </Link>
+          </div>
           <div className={"uk-navbar-item"}>
             <div>
               <div>Hello, {session?.user?.name}!</div>

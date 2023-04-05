@@ -55,7 +55,7 @@ export default function Dashboard() {
     <>
       <Layout>
         <div className={"uk-section uk-section-small"}>
-          <div className={"uk-container uk-container-expand"}>
+          <div className={"uk-container uk-container-xlarge"}>
             <div className={"uk-grid-match"} data-uk-grid={""}>
               <div className={"uk-width-1-2"}>
                 <div
@@ -81,22 +81,22 @@ export default function Dashboard() {
                   <p>Pageviews</p>
                 </div>
               </div>
-              <div className={"uk-width-1-1"}>
+              <div className={"uk-width-auto"}>
                 <div className={"uk-card uk-card-default uk-card-body"}>
                   <Overview />
                 </div>
               </div>
-              <div className={"uk-width-1-1"}>
+              <div className={"uk-width-auto"}>
                 <div className={"uk-card uk-card-default uk-card-body"}>
                   <Referrers />
                 </div>
               </div>
-              <div className={"uk-width-1-1"}>
+              <div className={"uk-width-auto"}>
                 <div className={"uk-card uk-card-default uk-card-body"}>
                   <Paths />
                 </div>
               </div>
-              <div className={"uk-width-1-1"}>
+              <div className={"uk-width-auto"}>
                 <div className={"uk-card uk-card-default uk-card-body"}>
                   <Screens />
                   {/*

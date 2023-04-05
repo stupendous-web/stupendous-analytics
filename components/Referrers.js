@@ -35,10 +35,10 @@ export default function Referrers() {
     <>
       <h2 id={"sources"}>Sources</h2>
       <div data-uk-grid={""}>
-        <div className={"uk-width-1-2@s"}>
+        <div className={"uk-width-auto"}>
           <table
             className={
-              "uk-table uk-table-striped uk-table-hover uk-table-small uk-table-responsive"
+              "uk-table uk-table-divider uk-table-hover uk-table-small uk-table-responsive"
             }
           >
             <thead>
@@ -79,7 +79,7 @@ export default function Referrers() {
             </tbody>
           </table>
         </div>
-        <div className={"uk-width-1-4@s"}>
+        <div className={"uk-width-auto"}>
           <p className={"uk-text-bold uk-margin-small-top"}>
             Pageviews per Type
           </p>
@@ -123,7 +123,7 @@ export default function Referrers() {
             }}
           />
         </div>
-        <div className={"uk-width-1-4@s"}>
+        <div className={"uk-width-auto"}>
           <p className={"uk-text-bold uk-margin-small-top"}>
             Sessions per Location
           </p>

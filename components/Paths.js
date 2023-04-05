@@ -26,10 +26,10 @@ export default function Paths() {
     <>
       <h2 id={"pages"}>Pages</h2>
       <div data-uk-grid={""}>
-        <div className={"uk-width-1-2@s"}>
+        <div className={"uk-width-auto"}>
           <table
             className={
-              "uk-table uk-table-striped uk-table-hover uk-table-small uk-table-responsive"
+              "uk-table uk-table-divider uk-table-hover uk-table-small uk-table-responsive"
             }
           >
             <thead>
@@ -52,7 +52,7 @@ export default function Paths() {
             </tbody>
           </table>
         </div>
-        <div className={"uk-width-1-4@s"}>
+        <div className={"uk-width-auto"}>
           <p className={"uk-text-bold uk-margin-small-top"}>
             Sessions per Page
           </p>
@@ -76,7 +76,7 @@ export default function Paths() {
             }}
           />
         </div>
-        <div className={"uk-width-1-4@s"}>
+        <div className={"uk-width-auto"}>
           <p className={"uk-text-bold uk-margin-small-top"}>
             Pageviews per Page
           </p>

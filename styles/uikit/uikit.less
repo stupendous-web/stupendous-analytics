@@ -4,8 +4,8 @@
 @global-font-family:                            roboto, sans-serif;
 @base-h1-line-height:                           1;
 @base-h2-line-height:                           1;
-@global-font-size:                              16px;
-@global-line-height:                            1.5;
+@global-font-size:                              14px;
+@global-line-height:                            1.25;
 @global-2xlarge-font-size:                      1rem;
 @global-xlarge-font-size:                       1rem;
 @global-large-font-size:                        1rem;
@@ -17,8 +17,8 @@
 @global-link-color:                             #d02670; // Magenta 70
 @global-link-hover-color:                       #d02670; // Magenta 70
 //@global-inverse-color:                          #fff;
-// @global-background:                             #fff;
-@global-muted-background:                       #f4f4f4; // Gray 10
+@global-background:                             #f4f4f4; // Gray 10
+@global-muted-background:                       #ffffff;
 @global-primary-background:                     #d02670; // Magenta 70
 @global-secondary-background:                   #000; // Magenta 80
 @global-success-background:                     #0e6027; // Green 70
@@ -35,13 +35,6 @@
 @global-medium-gutter:                          1rem;
 @global-large-gutter:                           1rem;
 
-// Material Design
-
-@global-small-box-shadow:                       0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20); // 1dp
-@global-medium-box-shadow:                      0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20); // 2dp
-@global-large-box-shadow:                       0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20); // 3dp
-@global-xlarge-box-shadow:                      0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20); // 4dp
-
 a:hover {
   text-decoration: none;
 }
@@ -49,36 +42,36 @@ h1 {
   font-weight: bold;
 }
 pre {
-  border-radius: calc(@global-font-size / 4);
+  border-radius: calc(@global-font-size / 2);
+}
+canvas {
+  max-height: 250px;
 }
 
 // Button
 
+@button-default-background:                     @global-muted-background;
 .uk-button {
-  border-radius: calc(@global-font-size / 4);
-  box-shadow: @global-small-box-shadow;
-}
-.uk-button:hover {
-  box-shadow: @global-medium-box-shadow;
+  border-radius: calc(@global-font-size / 2);
 }
 
 // Card
 
 .uk-card {
-  border-radius: calc(@global-font-size / 4);
-  box-shadow: @global-small-box-shadow;
+  border: solid 1px @global-border;
+  border-radius: calc(@global-font-size / 2);
 }
 
 // Alert
 
 .uk-alert {
-  border-radius: calc(@global-font-size / 4);
+  border-radius: calc(@global-font-size / 2);
 }
 
 // Form
 
 .uk-input, .uk-select {
-  border-radius: calc(@global-font-size / 4);
+  border-radius: calc(@global-font-size / 2);
 }
 
 // Navbar
@@ -86,17 +79,13 @@ pre {
 @navbar-nav-item-height:                        4rem;
 .uk-navbar {
   z-index: 980;
+  border-bottom: solid 1px @global-border;
 }
 
 // Table
 
 @table-row-active-background:                   #e5f6ff; // Cyan 10
-
-// Dropdown
-
-.uk-dropdown {
-  box-shadow: @global-large-box-shadow;
-}
+@table-small-cell-padding-vertical:             1rem;
 
 /**********/
 /* Custom */
@@ -119,12 +108,3 @@ pre {
 .rdrDefinedRangesWrapper, .rdrStaticRange, .rdrCalendarWrapper {
   background-color: @global-muted-background !important;
 }
-
-
-
-
-
-
-
-
-
