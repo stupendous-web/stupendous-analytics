@@ -43,7 +43,7 @@ export default function Navigation() {
             {router.pathname === "/app/dashboard" && <Filters />}
             <div className={"uk-navbar-item"}>
               <Link
-                href={"/app/dashboard"}
+                href={"/app/legacy-dashboard"}
                 className={"uk-button uk-button-primary uk-margin-right"}
               >
                 Dashboard
