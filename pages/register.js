@@ -37,8 +37,7 @@ export default function Register() {
     <>
       <Head>
         <title>
-          Register for FREE! | NextJS Website Analytics Dashboard | Stupendous
-          Web
+          Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web
         </title>
       </Head>
       <Navigation />

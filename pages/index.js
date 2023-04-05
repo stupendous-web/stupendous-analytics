@@ -31,7 +31,15 @@ export default function Home() {
                 Finally an easy-to-install web analytics tracker and dashboard
                 for NextJS apps. Getting started with Stupendous Web Analytics
                 is easy. Install and add two simple lines of code to your
-                project. Need help? Read the documentation or visit{" "}
+                project. Need help? Read the{" "}
+                <Link
+                  href={
+                    "https://github.com/stupendous-web/stupendous-analytics-next"
+                  }
+                >
+                  documentation
+                </Link>{" "}
+                or visit{" "}
                 <a
                   href={"https://stupendousweb.com"}
                   title={"Web App Development Services | Stupendous Web"}
@@ -41,23 +49,31 @@ export default function Home() {
                 for more.
               </p>
               <p>
-                <Link href={"/api/auth/login"} legacyBehavior>
-                  <a
-                    className={"uk-button uk-button-primary uk-margin-right"}
-                    title={
-                      "Login | NextJS Website Analytics Dashboard | Stupendous Web"
-                    }
-                  >
-                    Login
-                  </a>
+                <Link
+                  href={"/register"}
+                  className={"uk-button uk-button-primary uk-margin-right"}
+                  title={
+                    "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
+                  }
+                >
+                  Join for FREE!
+                </Link>
+                <Link
+                  href={"/api/auth/login"}
+                  className={"uk-button uk-button-default uk-margin-right"}
+                  title={
+                    "Login | NextJS Website Analytics Dashboard | Stupendous Web"
+                  }
+                >
+                  Login
                 </Link>
                 <Link
                   href={
                     "https://github.com/stupendous-web/stupendous-analytics-next"
                   }
-                  legacyBehavior
+                  className={"uk-button uk-button-default"}
                 >
-                  <a className={"uk-button uk-button-default"}>Docs</a>
+                  Docs
                 </Link>
               </p>
               <p className={"uk-text-small"}>

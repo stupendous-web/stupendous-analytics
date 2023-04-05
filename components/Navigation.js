@@ -42,27 +42,30 @@ export default function Navigation() {
           <>
             {router.pathname === "/app/dashboard" && <Filters />}
             <div className={"uk-navbar-item"}>
-              <Link href={"/app/dashboard"} legacyBehavior>
-                <a className={"uk-button uk-button-primary uk-margin-right"}>
-                  Dashboard
-                </a>
+              <Link
+                href={"/app/dashboard"}
+                className={"uk-button uk-button-primary uk-margin-right"}
+              >
+                Dashboard
               </Link>
-              <Link href={"/api/auth/logout"} legacyBehavior>
-                <a className={"uk-button uk-button-primary"}>Logout</a>
+              <Link
+                href={"/api/auth/logout"}
+                className={"uk-button uk-button-primary"}
+              >
+                Logout
               </Link>
             </div>
           </>
         ) : (
           <div className={"uk-navbar-item"}>
-            <Link href={"/api/auth/login"} legacyBehavior>
-              <a
-                title={
-                  "Login | NextJS Website Analytics Dashboard | Stupendous Web"
-                }
-                className={"uk-button uk-button-primary"}
-              >
-                Login
-              </a>
+            <Link
+              href={"/api/auth/login"}
+              title={
+                "Login | NextJS Website Analytics Dashboard | Stupendous Web"
+              }
+              className={"uk-button uk-button-primary"}
+            >
+              Login
             </Link>
           </div>
         )}
