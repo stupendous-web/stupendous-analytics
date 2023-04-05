@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0";
+import { signOut, useSession } from "next-auth/react";
 
 import Filters from "./Filters";
 
 export default function Navigation() {
   const router = useRouter();
 
-  const { user } = useUser();
+  const { data: session } = useSession();
 
   return (
     <nav
@@ -18,48 +18,56 @@ export default function Navigation() {
         <div className={"uk-navbar-left"}>
           <div className={"uk-navbar-item"}>
             <div>
-              <div>Hello, {user?.nickname}!</div>
+              <div>Hello, {session?.user?.name}!</div>
               <div className={"uk-text-small uk-text-muted"}>
-                Site: {user?.email}
+                Site: {session?.user?.sites?.[0]?._id}
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <Link href={"/"} legacyBehavior>
-          <a
-            title={
-              "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build a stupendous web app"
-            }
-            className={"uk-navbar-item uk-logo"}
-          >
-            Stupendous Analytics
-          </a>
+        <Link
+          href={"/"}
+          title={
+            "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
+          }
+          className={"uk-navbar-item uk-logo"}
+        >
+          Stupendous Analytics
         </Link>
       )}
       <div className={"uk-navbar-right"}>
-        {!!user ? (
+        {!!session?.user ? (
           <>
             {router.pathname === "/app/dashboard" && <Filters />}
             <div className={"uk-navbar-item"}>
               <Link
-                href={"/app/legacy-dashboard"}
+                href={"/app/dashboard"}
                 className={"uk-button uk-button-primary uk-margin-right"}
               >
                 Dashboard
               </Link>
-              <Link
-                href={"/api/auth/logout"}
+              <div
                 className={"uk-button uk-button-primary"}
+                onClick={() => signOut({ callbackUrl: "/" })}
               >
                 Logout
-              </Link>
+              </div>
             </div>
           </>
         ) : (
           <div className={"uk-navbar-item"}>
             <Link
-              href={"/api/auth/login"}
+              href={"/register"}
+              title={
+                "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
+              }
+              className={"uk-button uk-button-primary uk-margin-right"}
+            >
+              Join for FREE!
+            </Link>
+            <Link
+              href={"/login"}
               title={
                 "Login | NextJS Website Analytics Dashboard | Stupendous Web"
               }

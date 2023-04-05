@@ -23,23 +23,28 @@ export default async function handler(request, response) {
       } else {
         await collection
           .insertOne({
-            email: body.email,
+            name: body.name,
+            email: body.email.toLowerCase(),
             password: bcrypt.hashSync(body.password, 10),
             isAdmin: true,
             createdAt: new Date(),
           })
-          .then(
-            async (result) =>
-              await client
-                .db("stupendous-analytics")
-                .collection("accounts")
-                .insertOne({ users: [result.insertedId] })
-                .finally(() => {
-                  client.close();
+          .then(async (result) => {
+            await client
+              .db("stupendous-analytics")
+              .collection("sites")
+              .insertOne({ user: result.insertedId });
 
-                  response.send("Good things come to those who wait.");
-                })
-          );
+            await client
+              .db("stupendous-analytics")
+              .collection("accounts")
+              .insertOne({ users: [result.insertedId] })
+              .finally(() => {
+                client.close();
+
+                response.send("Good things come to those who wait.");
+              });
+          });
       }
       break;
     default:

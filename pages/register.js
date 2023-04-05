@@ -24,7 +24,7 @@ export default function Register() {
         signIn("credentials", {
           email: email,
           password: password,
-          callbackUrl: "/app",
+          callbackUrl: "/app/dashboard",
         });
       })
       .catch((error) => {
@@ -39,6 +39,14 @@ export default function Register() {
         <title>
           Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web
         </title>
+        <meta property={"og:url"} content={"https://stupendousanalytics.com"} />
+        <meta
+          property={"og:title"}
+          content={
+            "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
+          }
+        />
+        <meta property={"og:type"} content={"website"} />
       </Head>
       <Navigation />
       <div
@@ -50,6 +58,14 @@ export default function Register() {
           style={{ width: "100%", maxWidth: "600px" }}
         >
           <div class={"uk-card uk-card-primary uk-card-body"}>
+            <Link
+              href={"/"}
+              title={
+                "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
+              }
+            >
+              Stupendous Analytics
+            </Link>
             <h1>Join for FREE!</h1>
             <form onSubmit={handleSubmit}>
               <div className={"uk-margin"}>
@@ -100,8 +116,16 @@ export default function Register() {
               <input
                 type={"submit"}
                 value={"Let's Go!"}
-                className={"uk-button uk-button-primary"}
+                className={"uk-button uk-button-primary uk-margin-right"}
               />
+              <Link
+                href={"/login"}
+                title={
+                  "Login | NextJS Website Analytics Dashboard | Stupendous Web"
+                }
+              >
+                Login
+              </Link>
             </form>
           </div>
         </div>

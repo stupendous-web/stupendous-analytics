@@ -1,10 +1,13 @@
 import uikit from "uikit";
 import "../styles/uikit/uikit.css";
 import { Provider } from "../lib/context";
-import { UserProvider } from "@auth0/nextjs-auth0";
+import { SessionProvider } from "next-auth/react";
 import "remixicon/fonts/remixicon.css";
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   console.log(
     "%c ███  █████ █   █ ████  ████ █   █ ███   ███  █   █  ███  █     █ ████ ████\n" +
       "█       █   █   █ █   █ █    ██  █ █  █ █   █ █   █ █     █     █ █    █   █\n" +
@@ -15,10 +18,10 @@ export default function MyApp({ Component, pageProps }) {
   );
 
   return (
-    <UserProvider>
+    <SessionProvider session={session}>
       <Provider>
         <Component {...pageProps} />
       </Provider>
-    </UserProvider>
+    </SessionProvider>
   );
 }

@@ -1,6 +1,6 @@
+import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useGlobal } from "../../lib/context";
-import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { groupBy } from "../../utils/helpers";
 import { getPageviews } from "../../utils/api";
 
@@ -9,7 +9,7 @@ import Overview from "../../components/Overview";
 import Referrers from "../../components/Referrers";
 import Paths from "../../components/Paths";
 import Screens from "../../components/Screens";
-import Hours from "../../components/Hours";
+// import Hours from "../../components/Hours";
 
 export default function Dashboard() {
   const {
@@ -25,8 +25,8 @@ export default function Dashboard() {
     setHostOptions,
   } = useGlobal();
 
-  const { user } = useUser();
-  const site = user?.email;
+  const { data: session } = useSession();
+  const site = session?.user?.email;
 
   useEffect(() => {
     host
@@ -122,5 +122,3 @@ export default function Dashboard() {
     </>
   );
 }
-
-export const getServerSideProps = withPageAuthRequired();

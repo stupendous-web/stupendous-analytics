@@ -1,7 +1,7 @@
-import { useUser } from "@auth0/nextjs-auth0";
+import { useSession } from "next-auth/react";
 
 export default function SideNavigation() {
-  const { user } = useUser();
+  const { data: session } = useSession();
 
   const links = [
     {
@@ -31,9 +31,9 @@ export default function SideNavigation() {
         data-uk-navbar={""}
       >
         <div className={"uk-width-1-1 uk-navbar-item"}>
-          {user?.picture && (
+          {session?.user?.picture && (
             <img
-              src={user?.picture}
+              src={session?.user?.picture}
               className={"uk-border-circle"}
               style={{ width: "2rem" }}
             />

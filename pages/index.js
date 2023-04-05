@@ -12,8 +12,16 @@ export default function Home() {
       <Head>
         <title>
           NextJS Website Analytics Dashboard | Stupendous Web | If you want to
-          build community, build a stupendous web app
+          build community, build stupendous software
         </title>
+        <meta property={"og:url"} content={"https://stupendousanalytics.com"} />
+        <meta
+          property={"og:title"}
+          content={
+            "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
+          }
+        />
+        <meta property={"og:type"} content={"website"} />
       </Head>
       <Navigation />
       <div style={{ overflowY: "auto" }}>
@@ -59,7 +67,7 @@ export default function Home() {
                   Join for FREE!
                 </Link>
                 <Link
-                  href={"/api/auth/login"}
+                  href={"/login"}
                   className={"uk-button uk-button-default uk-margin-right"}
                   title={
                     "Login | NextJS Website Analytics Dashboard | Stupendous Web"
