@@ -23,8 +23,8 @@ export default function Referrers() {
             ),
             `referrer`
           ),
-          sessions: groupBy(pageview[1], "session")?.length - 1,
-          pageviews: pageview[1]?.length - 1,
+          sessions: groupBy(pageview[1], "session")?.length,
+          pageviews: pageview[1]?.length,
         };
       });
       setRows(data.sort((a, b) => (a?.sessions < b?.sessions ? 1 : -1)));
