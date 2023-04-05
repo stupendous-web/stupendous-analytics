@@ -74,14 +74,14 @@ strong {
   /* 2 */
   font-size: 0.875rem;
   /* 3 */
-  color: #a2191f;
+  color: #d02670;
   white-space: nowrap;
 }
 /*
  * Emphasize
  */
 em {
-  color: #a2191f;
+  color: #d02670;
 }
 /*
  * Insert
@@ -1499,7 +1499,7 @@ textarea.uk-form-large,
  */
 .uk-form-danger,
 .uk-form-danger:focus {
-  color: #a2191f;
+  color: #d02670;
 }
 /*
  * Success
@@ -1937,18 +1937,18 @@ select.uk-form-width-xsmall {
  * Danger
  */
 .uk-button-danger {
-  background-color: #a2191f;
+  background-color: #d02670;
   color: #fff;
 }
 /* Hover */
 .uk-button-danger:hover {
-  background-color: #8c161b;
+  background-color: #ba2264;
   color: #fff;
 }
 /* OnClick + Active */
 .uk-button-danger:active,
 .uk-button-danger.uk-active {
-  background-color: #761217;
+  background-color: #a51e59;
   color: #fff;
 }
 /*
@@ -2754,8 +2754,8 @@ select.uk-form-width-xsmall {
  * Danger
  */
 .uk-alert-danger {
-  background: #e5bebf;
-  color: #a2191f;
+  background: #f5d1e0;
+  color: #d02670;
 }
 /* ========================================================================
    Component: Placeholder
@@ -2838,7 +2838,7 @@ select.uk-form-width-xsmall {
  * Danger
  */
 .uk-label-danger {
-  background-color: #a2191f;
+  background-color: #d02670;
   color: #fff;
 }
 /* ========================================================================
@@ -4054,7 +4054,7 @@ select.uk-form-width-xsmall {
  * Danger
  */
 .uk-notification-message-danger {
-  color: #a2191f;
+  color: #d02670;
 }
 /* ========================================================================
    Component: Tooltip
@@ -6708,7 +6708,7 @@ ul.uk-nav-sub {
   color: #faa05a !important;
 }
 .uk-text-danger {
-  color: #a2191f !important;
+  color: #d02670 !important;
 }
 /* Background modifier
  ========================================================================== */

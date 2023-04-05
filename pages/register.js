@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import { signIn } from "next-auth/react";
@@ -47,7 +46,10 @@ export default function Register() {
         className={"uk-section uk-section-default uk-flex uk-flex-middle"}
         data-uk-height-viewport={"offset-top: true"}
       >
-        <div className={"uk-container uk-container-xsmall"}>
+        <div
+          className={"uk-container"}
+          style={{ width: "100%", maxWidth: "600px" }}
+        >
           <div class={"uk-card uk-card-primary uk-card-body"}>
             <h1>Join for FREE!</h1>
             <form onSubmit={handleSubmit}>
@@ -57,7 +59,7 @@ export default function Register() {
                   type={"text"}
                   value={name}
                   className={"uk-input"}
-                  onChange={(event) => setName(event.target.value)}
+                  onChange={(event) => setName(event.currentTarget.value)}
                   required
                 />
               </div>
@@ -67,7 +69,7 @@ export default function Register() {
                   type={"email"}
                   value={email}
                   className={"uk-input"}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => setEmail(event.currentTarget.value)}
                   required
                 />
               </div>
@@ -77,7 +79,7 @@ export default function Register() {
                   type={"password"}
                   value={password}
                   className={"uk-input"}
-                  onChange={(event) => setPassword(event.target.value)}
+                  onChange={(event) => setPassword(event.currentTarget.value)}
                   minLength={8}
                   required
                 />
@@ -88,9 +90,9 @@ export default function Register() {
                     {error} Please try again or email{" "}
                     <Link
                       href={"mailto:topher@stupendousweb.com"}
-                      legacyBehavior
+                      className={"uk-link-reset"}
                     >
-                      <a>topher@stupendousweb.com</a>
+                      topher@stupendousweb.com
                     </Link>{" "}
                     for help.
                   </p>
