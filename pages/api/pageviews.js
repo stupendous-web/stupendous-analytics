@@ -29,6 +29,26 @@ export default async function handler(request, response) {
   await client.connect();
 
   switch (request.method) {
+    case "GET":
+      await collection
+        .aggregate([
+          {
+            $match: {
+              site: query?.site,
+              createdAt: {
+                $gt: new Date(query?.startDate),
+                $lt: new Date(query?.endDate),
+              },
+              hostname: { $ne: "localhost" },
+              ...(query?.host ? { host: query?.host } : {}),
+            },
+          },
+        ])
+        .toArray()
+        .then((results) => response.json(results))
+        .finally(() => client.close());
+
+      break;
     case "POST":
       if (body) {
         const result = await collection.insertOne({
@@ -41,27 +61,6 @@ export default async function handler(request, response) {
       } else {
         response.status(200).send("Good things come to those who wait.");
       }
-
-      break;
-    case "GET":
-      await collection
-        .aggregate([
-          {
-            $match: {
-              site: query?.site,
-              createdAt: {
-                $gt: new Date(query?.startDate),
-                $lt: new Date(query?.endDate),
-              },
-              ...(query?.host ? { host: query?.host } : {}),
-            },
-          },
-        ])
-        .toArray()
-        .then((results) => {
-          response.status(200).json(results);
-        })
-        .finally(() => client.close());
 
       break;
   }
