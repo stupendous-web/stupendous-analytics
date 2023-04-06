@@ -20,7 +20,6 @@ export default function Dashboard() {
     host,
     pageviews,
     setPageviews,
-    filteredPageviews,
     setFilteredPageviews,
     setHostOptions,
   } = useGlobal();
@@ -55,33 +54,9 @@ export default function Dashboard() {
     <>
       <Layout>
         <div className={"uk-section uk-section-small"}>
-          <div className={"uk-container uk-container-xlarge"}>
+          <div className={"uk-container uk-container-expand"}>
             <div className={"uk-grid-match"} data-uk-grid={""}>
               <div className={"uk-width-1-2"}>
-                <div
-                  className={
-                    "uk-card uk-card-primary uk-card-body uk-text-center"
-                  }
-                >
-                  <h1 className={"uk-heading-large uk-margin-remove"}>
-                    {groupBy(filteredPageviews, "session")?.length || 0}
-                  </h1>
-                  <p>Sessions</p>
-                </div>
-              </div>
-              <div className={"uk-width-1-2"}>
-                <div
-                  className={
-                    "uk-card uk-card-primary uk-card-body uk-text-center"
-                  }
-                >
-                  <h1 className={"uk-heading-large uk-margin-remove"}>
-                    {filteredPageviews?.length || 0}
-                  </h1>
-                  <p>Pageviews</p>
-                </div>
-              </div>
-              <div className={"uk-width-auto"}>
                 <div className={"uk-card uk-card-default uk-card-body"}>
                   <Overview />
                 </div>
