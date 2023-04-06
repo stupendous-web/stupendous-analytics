@@ -42,10 +42,7 @@ export default function SideNavigation() {
                     <i className={link.icon} />
                   </p>
                 </a>
-                <div
-                  className={"speech-bubble-1"}
-                  data-uk-dropdown="pos: right-top; offset: -14"
-                >
+                <div data-uk-dropdown="pos: right-top; offset: -14">
                   <p className={"uk-text-bold"} style={{ color: "inherit" }}>
                     {link.heading}
                   </p>

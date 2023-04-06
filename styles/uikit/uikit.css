@@ -11506,19 +11506,12 @@ canvas {
   z-index: 980;
   border-bottom: solid 1px #e0e0e0;
 }
+.uk-dropdown {
+  border-radius: calc(14px / 2);
+}
 /**********/
 /* Custom */
 /**********/
-.speech-bubble-1 {
-  border-top-right-radius: calc(14px / 4);
-  border-bottom-right-radius: 14px;
-  border-bottom-left-radius: calc(14px / 4);
-}
-.speech-bubble-2 {
-  border-bottom-left-radius: 14px;
-  border-top-left-radius: calc(14px / 4);
-  border-bottom-right-radius: calc(14px / 4);
-}
 .rdrDefinedRangesWrapper,
 .rdrStaticRange,
 .rdrCalendarWrapper {

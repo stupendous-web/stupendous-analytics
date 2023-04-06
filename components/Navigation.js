@@ -14,7 +14,7 @@ export default function Navigation() {
     <nav className={"uk-navbar-container"} data-uk-navbar={""}>
       {router.pathname === "/app/dashboard" ? (
         <div className={"uk-navbar-left"}>
-          <div className={"uk-navbar-item"} style={{ width: "63px" }}>
+          <div className={"uk-navbar-item"}>
             <Link href={"https://en.gravatar.com/connect"} target={"_blank"}>
               <img
                 src={gravatar.url(session?.user?.email)}

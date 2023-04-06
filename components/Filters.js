@@ -27,8 +27,8 @@ export default function Filters() {
           <i className={"ri-calendar-fill"} />
         </a>
         <div
-          className={"speech-bubble-2"}
-          data-uk-dropdown="mode: click; pos: bottom-right; offset: 14"
+          className={"uk-box-shadow-small"}
+          data-uk-dropdown="mode: click; pos: bottom-right; offset: 28"
         >
           <DateRangePicker
             ranges={[
