@@ -100,6 +100,7 @@ export default function Home() {
                 src={screenshot}
                 alt={"NextJS Web Analytics Dashboard"}
                 className={"uk-padding uk-padding-remove uk-box-shadow-small"}
+                style={{ borderRadius: ".5rem" }}
               />
             </div>
           </div>
