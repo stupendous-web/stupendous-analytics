@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import Navigation from "../components/Navigation";
 
-import screenshot from "../images/screenshot.jpg";
+import screenshot from "../images/screenshot.png";
 
 export default function Home() {
   return (
@@ -99,7 +99,7 @@ export default function Home() {
               <Image
                 src={screenshot}
                 alt={"NextJS Web Analytics Dashboard"}
-                className={"uk-padding uk-padding-remove-horizontal"}
+                className={"uk-padding uk-padding-remove uk-box-shadow-small"}
               />
             </div>
           </div>
