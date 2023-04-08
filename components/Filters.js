@@ -2,21 +2,23 @@ import { useGlobal } from "../lib/context";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
+import { useState } from "react";
+import dayjs from "dayjs";
+import UIkit from "uikit";
 
 export default function Filters() {
-  const {
-    startDate,
-    setStartDate,
-    endDate,
-    setEndDate,
-    hostOptions,
-    host,
-    setHost,
-  } = useGlobal();
+  const { setStartDate, setEndDate, hostOptions, host, setHost, setIsLoading } =
+    useGlobal();
+  const [localStartDate, setLocalStartDate] = useState(
+    dayjs().subtract(7, "days").toDate()
+  );
+  const [localEndDate, setLocalEndDate] = useState(
+    dayjs().endOf("day").toDate()
+  );
 
   const handleSelect = (range) => {
-    setStartDate(range?.startDate);
-    setEndDate(range?.endDate);
+    setLocalStartDate(range?.startDate);
+    setLocalEndDate(range?.endDate);
   };
 
   return (
@@ -28,19 +30,37 @@ export default function Filters() {
         </a>
         <div
           className={"uk-box-shadow-small"}
+          id={"dropdown"}
           data-uk-dropdown="mode: click; pos: bottom-right; offset: 28"
         >
           <DateRangePicker
             ranges={[
               {
-                startDate: startDate,
-                endDate: endDate,
+                startDate: localStartDate,
+                endDate: localEndDate,
                 key: "selection",
                 color: "#d02670",
               },
             ]}
             onChange={(ranges) => handleSelect(ranges?.selection)}
           />
+          <p className={"uk-text-right uk-text-bold"}>
+            <a
+              onClick={() => {
+                setIsLoading(true);
+                const promise = new Promise((resolve) => {
+                  UIkit.dropdown("#dropdown").hide();
+                  resolve();
+                });
+                promise.then(() => {
+                  setStartDate(localStartDate);
+                  setEndDate(localEndDate);
+                });
+              }}
+            >
+              Apply
+            </a>
+          </p>
         </div>
       </div>
       <div className={"uk-navbar-item"}>
