@@ -11506,9 +11506,6 @@ canvas {
   z-index: 980;
   border-bottom: solid 1px #e0e0e0;
 }
-.uk-dropdown {
-  border-radius: calc(14px / 2);
-}
 /**********/
 /* Custom */
 /**********/

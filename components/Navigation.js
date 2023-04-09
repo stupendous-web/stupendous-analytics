@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import gravatar from "gravatar";
 
 import Filters from "./Filters";
-import gravatar from "gravatar";
 
 export default function Navigation() {
   const router = useRouter();
@@ -48,12 +48,14 @@ export default function Navigation() {
           <>
             {router.pathname === "/app/dashboard" && <Filters />}
             <div className={"uk-navbar-item"}>
-              <Link
-                href={"/app/dashboard"}
-                className={"uk-button uk-button-primary uk-margin-right"}
-              >
-                Dashboard
-              </Link>
+              {router.pathname !== "/app/dashboard" && (
+                <Link
+                  href={"/app/dashboard"}
+                  className={"uk-button uk-button-primary uk-margin-right"}
+                >
+                  Dashboard
+                </Link>
+              )}
               <div
                 className={"uk-button uk-button-primary"}
                 onClick={() => signOut({ callbackUrl: "/" })}

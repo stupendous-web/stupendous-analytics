@@ -1,20 +1,28 @@
+import { useEffect, useState } from "react";
 import { useGlobal } from "../lib/context";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
-import { useState } from "react";
-import dayjs from "dayjs";
-import UIkit from "uikit";
 
 export default function Filters() {
-  const { setStartDate, setEndDate, hostOptions, host, setHost, setIsLoading } =
-    useGlobal();
-  const [localStartDate, setLocalStartDate] = useState(
-    dayjs().subtract(7, "days").toDate()
-  );
-  const [localEndDate, setLocalEndDate] = useState(
-    dayjs().endOf("day").toDate()
-  );
+  const [isShowingDateRange, setIsShowingDateRange] = useState(false);
+  const [localStartDate, setLocalStartDate] = useState();
+  const [localEndDate, setLocalEndDate] = useState();
+  const {
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    hostOptions,
+    host,
+    setHost,
+    setIsLoading,
+  } = useGlobal();
+
+  useEffect(() => {
+    setLocalStartDate(startDate);
+    setLocalEndDate(endDate);
+  }, [startDate, endDate]);
 
   const handleSelect = (range) => {
     setLocalStartDate(range?.startDate);
@@ -24,43 +32,46 @@ export default function Filters() {
   return (
     <>
       <div className={"uk-navbar-item"}>
-        <a className={"uk-flex uk-flex-middle"}>
-          Date Range&nbsp;
-          <i className={"ri-calendar-fill"} />
-        </a>
-        <div
-          className={"uk-box-shadow-small"}
-          id={"dropdown"}
-          data-uk-dropdown="mode: click; pos: bottom-right; offset: 28"
-        >
-          <DateRangePicker
-            ranges={[
-              {
-                startDate: localStartDate,
-                endDate: localEndDate,
-                key: "selection",
-                color: "#d02670",
-              },
-            ]}
-            onChange={(ranges) => handleSelect(ranges?.selection)}
-          />
-          <p className={"uk-text-right uk-text-bold"}>
-            <a
-              onClick={() => {
-                setIsLoading(true);
-                const promise = new Promise((resolve) => {
-                  UIkit.dropdown("#dropdown").hide();
-                  resolve();
-                });
-                promise.then(() => {
-                  setStartDate(localStartDate);
-                  setEndDate(localEndDate);
-                });
-              }}
+        <div className={"uk-inline"}>
+          <a
+            className={"uk-flex uk-flex-middle uk-height-1-1"}
+            onClick={() => setIsShowingDateRange(!isShowingDateRange)}
+          >
+            Date Range&nbsp;
+            <i className={"ri-calendar-fill"} />
+          </a>
+          {isShowingDateRange && (
+            <div
+              className={
+                "uk-background-muted uk-box-shadow-small uk-position-absolute uk-padding"
+              }
+              style={{ borderRadius: ".5rem", top: 43, right: 0 }}
             >
-              Apply
-            </a>
-          </p>
+              <DateRangePicker
+                ranges={[
+                  {
+                    startDate: localStartDate,
+                    endDate: localEndDate,
+                    key: "selection",
+                    color: "#d02670",
+                  },
+                ]}
+                onChange={(ranges) => handleSelect(ranges?.selection)}
+              />
+              <p className={"uk-text-right uk-text-bold"}>
+                <a
+                  onClick={() => {
+                    setIsLoading(true);
+                    setIsShowingDateRange(false);
+                    setStartDate(localStartDate);
+                    setEndDate(localEndDate);
+                  }}
+                >
+                  Apply
+                </a>
+              </p>
+            </div>
+          )}
         </div>
       </div>
       <div className={"uk-navbar-item"}>

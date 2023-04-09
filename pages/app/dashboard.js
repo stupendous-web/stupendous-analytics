@@ -1,5 +1,6 @@
-import { useSession } from "next-auth/react";
 import { useEffect } from "react";
+import Head from "next/head";
+import { useSession } from "next-auth/react";
 import { useGlobal } from "../../lib/context";
 import { groupBy } from "../../utils/helpers";
 import { getPageviews } from "../../utils/api";
@@ -52,6 +53,11 @@ export default function Dashboard() {
 
   return (
     <>
+      <Head>
+        <title>
+          Dashboard | NextJS Website Analytics Dashboard | Stupendous Web
+        </title>
+      </Head>
       <Layout>
         <div className={"uk-section uk-section-small"}>
           <div className={"uk-container uk-container-expand"}>

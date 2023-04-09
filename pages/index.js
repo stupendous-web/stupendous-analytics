@@ -1,12 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 import Navigation from "../components/Navigation";
 
 import screenshot from "../images/screenshot.png";
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <>
       <Head>
@@ -57,24 +60,40 @@ export default function Home() {
                 for more.
               </p>
               <p>
-                <Link
-                  href={"/register"}
-                  className={"uk-button uk-button-primary uk-margin-right"}
-                  title={
-                    "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
-                  }
-                >
-                  Join for FREE!
-                </Link>
-                <Link
-                  href={"/login"}
-                  className={"uk-button uk-button-default uk-margin-right"}
-                  title={
-                    "Login | NextJS Website Analytics Dashboard | Stupendous Web"
-                  }
-                >
-                  Login
-                </Link>
+                {session?.user ? (
+                  <>
+                    <Link
+                      href={"/app/dashboard"}
+                      className={"uk-button uk-button-primary uk-margin-right"}
+                      title={
+                        "Dashboard | NextJS Website Analytics Dashboard | Stupendous Web"
+                      }
+                    >
+                      Dashboard
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href={"/register"}
+                      className={"uk-button uk-button-primary uk-margin-right"}
+                      title={
+                        "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
+                      }
+                    >
+                      Join for FREE!
+                    </Link>
+                    <Link
+                      href={"/login"}
+                      className={"uk-button uk-button-default uk-margin-right"}
+                      title={
+                        "Login | NextJS Website Analytics Dashboard | Stupendous Web"
+                      }
+                    >
+                      Login
+                    </Link>
+                  </>
+                )}
                 <Link
                   href={
                     "https://github.com/stupendous-web/stupendous-analytics-next"
