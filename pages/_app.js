@@ -25,7 +25,11 @@ export default function MyApp({
       <SessionProvider session={session}>
         <Provider>
           <Navigation />
-          <Box style={{ height: "calc(100vh - 4rem)", overflowY: "auto" }}>
+          <Box
+            h={"calc(100vh - 64px)"}
+            w={"100%"}
+            style={{ overflowY: "auto" }}
+          >
             <Component {...pageProps} />
           </Box>
         </Provider>

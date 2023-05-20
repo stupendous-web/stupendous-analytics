@@ -2,9 +2,9 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import gravatar from "gravatar";
+import { Box, Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 
 import Filters from "./Filters";
-import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 
 export default function Navigation() {
   const router = useRouter();
@@ -12,7 +12,7 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   return (
-    <Flex align={"center"} bg={"gray.50"} px={[4, 8]}>
+    <Flex h={16} align={"center"} bg={"gray.50"} px={[4, 8]}>
       {router.pathname === "/app/dashboard" ? (
         <>
           <Link
@@ -25,10 +25,12 @@ export default function Navigation() {
               style={{ width: "2rem", borderRadius: "1rem" }}
             />
           </Link>
-          <div>Hello, {session?.user?.name}!</div>
-          <div className={"uk-text-small uk-text-muted"}>
-            Site: {session?.user?.sites?.[0]?._id}
-          </div>
+          <Box ml={4}>
+            <Text m={0}>Hello, {session?.user?.name}!</Text>
+            <Text size={"sm"} color={"gray.500"} m={0}>
+              Site: {session?.user?.sites?.[0]?._id}
+            </Text>
+          </Box>
         </>
       ) : (
         <Link
@@ -48,18 +50,15 @@ export default function Navigation() {
             {router.pathname === "/app/dashboard" && <Filters />}
             <>
               {router.pathname !== "/app/dashboard" && (
-                <Link
-                  as={NextLink}
-                  href={"/app/dashboard"}
-                  className={"uk-button uk-button-primary uk-margin-right"}
-                >
-                  <Button colorScheme={"primary"} mr={4}>
+                <Link as={NextLink} href={"/app/dashboard"}>
+                  <Button colorScheme={"primary"} my={0} mr={4}>
                     Dashboard
                   </Button>
                 </Link>
               )}
               <Button
                 colorScheme={"primary"}
+                my={0}
                 onClick={() => signOut({ callbackUrl: "/" })}
               >
                 Logout
@@ -75,7 +74,7 @@ export default function Navigation() {
                 "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
               }
             >
-              <Button colorScheme={"primary"} size={"sm"} mt={4} mr={4}>
+              <Button colorScheme={"primary"} size={"sm"} my={0} mr={4}>
                 Join for FREE!
               </Button>
             </Link>
@@ -85,7 +84,7 @@ export default function Navigation() {
                 "Login | NextJS Website Analytics Dashboard | Stupendous Web"
               }
             >
-              <Button colorScheme={"gray"} size={"sm"} mt={4}>
+              <Button colorScheme={"gray"} size={"sm"} my={0}>
                 Login
               </Button>
             </Link>

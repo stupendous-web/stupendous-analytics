@@ -33,12 +33,8 @@ export default function Home() {
         />
         <meta property={"og:type"} content={"website"} />
       </Head>
-      <Container maxW={"container.xl"} my={8}>
-        <Flex
-          direction={["column", "row"]}
-          align={"center"}
-          style={{ height: "calc(100vh - 4rem)" }}
-        >
+      <Container h={"100%"} maxW={"container.xl"}>
+        <Flex h={"100%"} direction={["column", "row"]} align={"center"} py={8}>
           <Box>
             <Heading as={"h1"}>NextJS Website Analytics Dashboard</Heading>
             <Text>
