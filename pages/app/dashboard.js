@@ -63,7 +63,7 @@ export default function Dashboard() {
           <Card h={"350px"} w={"800px"} p={4} mr={4}>
             <Overview />
           </Card>
-          <Card w={"800px"} p={4}>
+          <Card w={"900px"} p={4}>
             <Referrers />
           </Card>
         </Flex>

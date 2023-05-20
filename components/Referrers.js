@@ -95,10 +95,8 @@ export default function Referrers() {
             </Table>
           </TableContainer>
         </Box>
-        <Box w={"25%"}>
-          <p className={"uk-text-bold uk-margin-small-top"}>
-            Pageviews per Type
-          </p>
+        <Box w={"25%"} px={4}>
+          <Text>Pageviews per Type</Text>
           <Chart
             type={"doughnut"}
             data={{
@@ -139,7 +137,7 @@ export default function Referrers() {
             }}
           />
         </Box>
-        <Box w={"25%"}>
+        <Box w={"25%"} px={4}>
           <Text>Sessions per Location</Text>
           <Chart
             type={"doughnut"}
