@@ -13,36 +13,35 @@ export default function Navigation() {
 
   return (
     <Flex align={"center"} bg={"gray.50"} px={[4, 8]}>
-      <Box hideBelow={"md"}>
-        {router.pathname === "/app/dashboard" ? (
-          <>
-            <Link
-              as={NextLink}
-              href={"https://en.gravatar.com/connect"}
-              target={"_blank"}
-            >
-              <img
-                src={gravatar.url(session?.user?.email)}
-                style={{ width: "2rem", borderRadius: "1rem" }}
-              />
-            </Link>
-            <div>Hello, {session?.user?.name}!</div>
-            <div className={"uk-text-small uk-text-muted"}>
-              Site: {session?.user?.sites?.[0]?._id}
-            </div>
-          </>
-        ) : (
+      {router.pathname === "/app/dashboard" ? (
+        <>
           <Link
             as={NextLink}
-            href={"/"}
-            title={
-              "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
-            }
+            href={"https://en.gravatar.com/connect"}
+            target={"_blank"}
           >
-            <Heading pt={4}>Stupendous Analytics</Heading>
+            <img
+              src={gravatar.url(session?.user?.email)}
+              style={{ width: "2rem", borderRadius: "1rem" }}
+            />
           </Link>
-        )}
-      </Box>
+          <div>Hello, {session?.user?.name}!</div>
+          <div className={"uk-text-small uk-text-muted"}>
+            Site: {session?.user?.sites?.[0]?._id}
+          </div>
+        </>
+      ) : (
+        <Link
+          as={NextLink}
+          href={"/"}
+          title={
+            "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
+          }
+          hideBelow={"md"}
+        >
+          <Heading m={0}>Stupendous Analytics</Heading>
+        </Link>
+      )}
       <Box ml={"auto"}>
         {!!session?.user ? (
           <>

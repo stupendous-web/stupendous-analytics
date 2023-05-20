@@ -5,7 +5,6 @@ import { useGlobal } from "../../lib/context";
 import { groupBy } from "../../utils/helpers";
 import { getPageviews } from "../../utils/api";
 
-import Layout from "../../components/Layout";
 import Overview from "../../components/Overview";
 import Referrers from "../../components/Referrers";
 import Paths from "../../components/Paths";
@@ -58,48 +57,46 @@ export default function Dashboard() {
           Dashboard | NextJS Website Analytics Dashboard | Stupendous Web
         </title>
       </Head>
-      <Layout>
-        <div className={"uk-section uk-section-small"}>
-          <div className={"uk-container uk-container-expand"}>
-            <div className={"uk-grid-match"} data-uk-grid={""}>
-              <div className={"uk-width-1-2"}>
-                <div className={"uk-card uk-card-default uk-card-body"}>
-                  <Overview />
-                </div>
+      <div className={"uk-section uk-section-small"}>
+        <div className={"uk-container uk-container-expand"}>
+          <div className={"uk-grid-match"} data-uk-grid={""}>
+            <div className={"uk-width-1-2"}>
+              <div className={"uk-card uk-card-default uk-card-body"}>
+                <Overview />
               </div>
-              <div className={"uk-width-auto"}>
-                <div className={"uk-card uk-card-default uk-card-body"}>
-                  <Referrers />
-                </div>
+            </div>
+            <div className={"uk-width-auto"}>
+              <div className={"uk-card uk-card-default uk-card-body"}>
+                <Referrers />
               </div>
-              <div className={"uk-width-auto"}>
-                <div className={"uk-card uk-card-default uk-card-body"}>
-                  <Paths />
-                </div>
+            </div>
+            <div className={"uk-width-auto"}>
+              <div className={"uk-card uk-card-default uk-card-body"}>
+                <Paths />
               </div>
-              <div className={"uk-width-auto"}>
-                <div className={"uk-card uk-card-default uk-card-body"}>
-                  <Screens />
-                  {/*
+            </div>
+            <div className={"uk-width-auto"}>
+              <div className={"uk-card uk-card-default uk-card-body"}>
+                <Screens />
+                {/*
           <Hours />
           */}
-                </div>
               </div>
-              {isLoading && (
-                <div
-                  className={
-                    "uk-width-1-1 uk-section-default uk-flex uk-flex-center uk-flex-middle uk-position-fixed"
-                  }
-                  data-uk-height-viewport={""}
-                  style={{ top: 0, left: 0 }}
-                >
-                  Loading...
-                </div>
-              )}
             </div>
+            {isLoading && (
+              <div
+                className={
+                  "uk-width-1-1 uk-section-default uk-flex uk-flex-center uk-flex-middle uk-position-fixed"
+                }
+                data-uk-height-viewport={""}
+                style={{ top: 0, left: 0 }}
+              >
+                Loading...
+              </div>
+            )}
           </div>
         </div>
-      </Layout>
+      </div>
     </>
   );
 }
