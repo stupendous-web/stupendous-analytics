@@ -3,6 +3,7 @@ import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import dayjs from "dayjs";
 import { groupBy } from "../utils/helpers";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 export default function Overview() {
   const { filteredPageviews } = useGlobal();
@@ -28,57 +29,59 @@ export default function Overview() {
 
   return (
     <>
-      <div className={"uk-margin"} data-uk-grid={""}>
-        <div>
-          <div>Sessions</div>
-          <div className={"uk-text-bold"} style={{ fontSize: "2rem" }}>
+      <Flex>
+        <Box mr={4}>
+          <Heading>Sessions</Heading>
+          <Text fontWeight={"bold"} fontSize={"2xl"}>
             {groupBy(filteredPageviews, "session")?.length || 0}
-          </div>
-        </div>
-        <div>
-          <div>Pageviews</div>
-          <div className={"uk-text-bold"} style={{ fontSize: "2rem" }}>
+          </Text>
+        </Box>
+        <Box>
+          <Heading>Pageviews</Heading>
+          <Text fontWeight={"bold"} fontSize={"2xl"}>
             {filteredPageviews?.length || 0}
-          </div>
-        </div>
-      </div>
-      <Chart
-        type={"line"}
-        data={{
-          labels: rows?.map((row) => dayjs(row.date).format("M-D-YY")),
-          datasets: [
-            {
-              label: "Pageivews",
-              data: rows?.map((row) => row?.pageviews),
-              borderColor: "rgba(159, 24, 83, 1)",
-              backgroundColor: "rgba(159, 24, 83, .1)",
-              fill: true,
-            },
-            {
-              label: "Sessions",
-              data: rows?.map((row) => row?.sessions),
-              borderColor: "rgba(159, 24, 83, 1)",
-              backgroundColor: "rgba(159, 24, 83, .1)",
-              fill: true,
-            },
-          ],
-        }}
-        options={{
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          scales: {
-            x: {
-              grid: {
+          </Text>
+        </Box>
+      </Flex>
+      <Box>
+        <Chart
+          type={"line"}
+          data={{
+            labels: rows?.map((row) => dayjs(row.date).format("M-D-YY")),
+            datasets: [
+              {
+                label: "Pageivews",
+                data: rows?.map((row) => row?.pageviews),
+                borderColor: "rgba(159, 24, 83, 1)",
+                backgroundColor: "rgba(159, 24, 83, .1)",
+                fill: true,
+              },
+              {
+                label: "Sessions",
+                data: rows?.map((row) => row?.sessions),
+                borderColor: "rgba(159, 24, 83, 1)",
+                backgroundColor: "rgba(159, 24, 83, .1)",
+                fill: true,
+              },
+            ],
+          }}
+          options={{
+            plugins: {
+              legend: {
                 display: false,
               },
             },
-          },
-          maintainAspectRatio: false,
-        }}
-      />
+            scales: {
+              x: {
+                grid: {
+                  display: false,
+                },
+              },
+            },
+            maintainAspectRatio: false,
+          }}
+        />
+      </Box>
     </>
   );
 }

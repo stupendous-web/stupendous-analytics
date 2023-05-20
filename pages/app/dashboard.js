@@ -9,6 +9,7 @@ import Overview from "../../components/Overview";
 import Referrers from "../../components/Referrers";
 import Paths from "../../components/Paths";
 import Screens from "../../components/Screens";
+import { Card, Container, Flex } from "@chakra-ui/react";
 // import Hours from "../../components/Hours";
 
 export default function Dashboard() {
@@ -57,6 +58,16 @@ export default function Dashboard() {
           Dashboard | NextJS Website Analytics Dashboard | Stupendous Web
         </title>
       </Head>
+      <Container maxW={"full"} py={4}>
+        <Flex>
+          <Card h={"350px"} w={"800px"} p={4} mr={4}>
+            <Overview />
+          </Card>
+          <Card w={"800px"} p={4}>
+            <Referrers />
+          </Card>
+        </Flex>
+      </Container>
       {/*<div className={"uk-section uk-section-small"}>*/}
       {/*  <div className={"uk-container uk-container-expand"}>*/}
       {/*    <div className={"uk-grid-match"} data-uk-grid={""}>*/}

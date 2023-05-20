@@ -12,7 +12,7 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   return (
-    <Flex h={16} align={"center"} bg={"gray.50"} px={[4, 8]}>
+    <Flex h={16} align={"center"} bg={"gray.50"} px={4}>
       {router.pathname === "/app/dashboard" ? (
         <>
           <Link
