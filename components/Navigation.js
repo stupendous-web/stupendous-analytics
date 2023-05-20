@@ -12,35 +12,37 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   return (
-    <Flex align={"center"} bg={"gray.50"} px={8}>
-      {router.pathname === "/app/dashboard" ? (
-        <>
+    <Flex align={"center"} bg={"gray.50"} px={[4, 8]}>
+      <Box hideBelow={"md"}>
+        {router.pathname === "/app/dashboard" ? (
+          <>
+            <Link
+              as={NextLink}
+              href={"https://en.gravatar.com/connect"}
+              target={"_blank"}
+            >
+              <img
+                src={gravatar.url(session?.user?.email)}
+                style={{ width: "2rem", borderRadius: "1rem" }}
+              />
+            </Link>
+            <div>Hello, {session?.user?.name}!</div>
+            <div className={"uk-text-small uk-text-muted"}>
+              Site: {session?.user?.sites?.[0]?._id}
+            </div>
+          </>
+        ) : (
           <Link
             as={NextLink}
-            href={"https://en.gravatar.com/connect"}
-            target={"_blank"}
+            href={"/"}
+            title={
+              "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
+            }
           >
-            <img
-              src={gravatar.url(session?.user?.email)}
-              style={{ width: "2rem", borderRadius: "1rem" }}
-            />
+            <Heading pt={4}>Stupendous Analytics</Heading>
           </Link>
-          <div>Hello, {session?.user?.name}!</div>
-          <div className={"uk-text-small uk-text-muted"}>
-            Site: {session?.user?.sites?.[0]?._id}
-          </div>
-        </>
-      ) : (
-        <Link
-          as={NextLink}
-          href={"/"}
-          title={
-            "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
-          }
-        >
-          <Heading pt={4}>Stupendous Analytics</Heading>
-        </Link>
-      )}
+        )}
+      </Box>
       <Box ml={"auto"}>
         {!!session?.user ? (
           <>

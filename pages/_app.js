@@ -2,9 +2,10 @@ import uikit from "uikit"; // TODO: Remove
 import { Provider } from "../lib/context";
 import { SessionProvider } from "next-auth/react";
 import "remixicon/fonts/remixicon.css";
-import { ChakraBaseProvider } from "@chakra-ui/react"; // TODO: Remove
+import { Box, ChakraBaseProvider } from "@chakra-ui/react";
 
 import theme from "../utils/chakraHelper";
+import Navigation from "../components/Navigation";
 
 export default function MyApp({
   Component,
@@ -23,7 +24,10 @@ export default function MyApp({
     <ChakraBaseProvider theme={theme}>
       <SessionProvider session={session}>
         <Provider>
-          <Component {...pageProps} />
+          <Navigation />
+          <Box style={{ height: "calc(100vh - 4rem)", overflowY: "auto" }}>
+            <Component {...pageProps} />
+          </Box>
         </Provider>
       </SessionProvider>
     </ChakraBaseProvider>

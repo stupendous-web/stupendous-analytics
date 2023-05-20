@@ -1,36 +1,59 @@
 import { useState } from "react";
+import Image from "next/image";
 import Head from "next/head";
-import Link from "next/link";
+import NextLink from "next/link";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AspectRatio,
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Text,
+} from "@chakra-ui/react";
 
-import Navigation from "../components/Navigation";
+import analytics from "../images/analytics.svg";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState();
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("/api/users", {
-        name: name,
-        email: email,
-        password: password,
-      })
-      .then(() => {
-        signIn("credentials", {
+    if (password !== passwordConfirmation) {
+      setError("Your passwords must match.");
+    } else {
+      axios
+        .post("/api/users", {
+          name: name,
           email: email,
           password: password,
-          callbackUrl: "/app/dashboard",
+        })
+        .then(() => {
+          signIn("credentials", {
+            email: email,
+            password: password,
+            callbackUrl: "/app/dashboard",
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          setError(
+            error?.response?.data?.title || "Hmm. Something went wrong."
+          );
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error?.response?.data?.title || "Hmm. Something went wrong.");
-      });
+    }
   };
 
   return (
@@ -48,88 +71,111 @@ export default function Register() {
         />
         <meta property={"og:type"} content={"website"} />
       </Head>
-      <Navigation />
-      <div
-        className={"uk-section uk-section-default uk-flex uk-flex-middle"}
-        data-uk-height-viewport={"offset-top: true"}
-      >
-        <div
-          className={"uk-container"}
-          style={{ width: "100%", maxWidth: "600px" }}
+      <Flex h={"100%"} w={"100%"} align={"center"}>
+        <Flex
+          minH={"100%"}
+          w={"400px"}
+          align={"center"}
+          bg={"primary.500"}
+          color={"primary.50"}
+          px={4}
+          pb={4}
         >
-          <div class={"uk-card uk-card-primary uk-card-body"}>
-            <Link
-              href={"/"}
-              title={
-                "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
-              }
-            >
-              Stupendous Analytics
-            </Link>
-            <h1>Join for FREE!</h1>
+          <Box w={"100%"}>
             <form onSubmit={handleSubmit}>
-              <div className={"uk-margin"}>
-                <label className={"uk-form-label"}>Name</label>
-                <input
+              <Text>
+                <Link
+                  as={NextLink}
+                  href={"/"}
+                  title={
+                    "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
+                  }
+                  color={"primary.50"}
+                >
+                  Stupendous Analytics
+                </Link>
+              </Text>
+              <Heading>Join for FREE!</Heading>
+              <FormControl isRequired={true}>
+                <FormLabel>Name</FormLabel>
+                <Input
                   type={"text"}
                   value={name}
-                  className={"uk-input"}
                   onChange={(event) => setName(event.currentTarget.value)}
-                  required
+                  mb={4}
                 />
-              </div>
-              <div className={"uk-margin"}>
-                <label className={"uk-form-label"}>Email</label>
-                <input
+                <FormLabel>Email</FormLabel>
+                <Input
                   type={"email"}
                   value={email}
                   className={"uk-input"}
                   onChange={(event) => setEmail(event.currentTarget.value)}
-                  required
+                  mb={4}
                 />
-              </div>
-              <div className={"uk-margin"}>
-                <label className={"uk-form-label"}>Password</label>
-                <input
+                <FormLabel>Password</FormLabel>
+                <Input
                   type={"password"}
                   value={password}
                   className={"uk-input"}
                   onChange={(event) => setPassword(event.currentTarget.value)}
                   minLength={8}
-                  required
+                  mb={4}
                 />
-              </div>
+                <FormLabel>Password Confirmation</FormLabel>
+                <Input
+                  type={"password"}
+                  value={passwordConfirmation}
+                  className={"uk-input"}
+                  onChange={(event) =>
+                    setPasswordConfirmation(event.currentTarget.value)
+                  }
+                  minLength={8}
+                  mb={4}
+                />
+              </FormControl>
               {error && (
-                <div className={"uk-alert-danger"} data-uk-alert={""}>
-                  <p>
+                <Alert
+                  status={"error"}
+                  color={"black"}
+                  mb={4}
+                  borderRadius={"md"}
+                >
+                  <AlertIcon />
+                  <AlertDescription>
                     {error} Please try again or email{" "}
-                    <Link
-                      href={"mailto:topher@stupendousweb.com"}
-                      className={"uk-link-reset"}
-                    >
+                    <Link href={"mailto:topher@stupendousweb.com"}>
                       topher@stupendousweb.com
                     </Link>{" "}
                     for help.
-                  </p>
-                </div>
+                  </AlertDescription>
+                </Alert>
               )}
-              <input
-                type={"submit"}
-                value={"Let's Go!"}
-                className={"uk-button uk-button-primary uk-margin-right"}
-              />
+              <Button colorScheme={"whiteAlpha"} type={"submit"} mr={4} mb={0}>
+                Let&apos;s Go!
+              </Button>
               <Link
+                as={NextLink}
                 href={"/login"}
                 title={
                   "Login | NextJS Website Analytics Dashboard | Stupendous Web"
                 }
+                color={"white"}
               >
                 Login
               </Link>
             </form>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Flex>
+        <Flex w={"100%"} justify={"center"} p={16} hideBelow={"md"}>
+          <AspectRatio ratio={4 / 3} w={"400px"}>
+            <Image
+              src={analytics}
+              alt={"Stupendous Analytics"}
+              style={{ objectFit: "fill" }}
+            />
+          </AspectRatio>
+        </Flex>
+      </Flex>
     </>
   );
 }
