@@ -10,6 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "axios": "^1.1.3",
     "bcrypt": "^5.1.0",
     "chart.js": "^4.0.1",
@@ -18,6 +21,7 @@
     "dayjs": "^1.11.6",
     "eslint": "8.28.0",
     "eslint-config-next": "^13.4.3",
+    "framer-motion": "^10.12.12",
     "gravatar": "^1.8.2",
     "mongodb": "^5.0.1",
     "next": "^13.4.3",

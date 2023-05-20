@@ -1,9 +1,10 @@
-import Link from "next/link";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 import gravatar from "gravatar";
 
 import Filters from "./Filters";
+import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 
 export default function Navigation() {
   const router = useRouter();
@@ -11,82 +12,85 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   return (
-    <nav className={"uk-navbar-container"} data-uk-navbar={""}>
+    <Flex align={"center"} bg={"gray.50"} px={8}>
       {router.pathname === "/app/dashboard" ? (
-        <div className={"uk-navbar-left"}>
-          <div className={"uk-navbar-item"}>
-            <Link href={"https://en.gravatar.com/connect"} target={"_blank"}>
-              <img
-                src={gravatar.url(session?.user?.email)}
-                className={"uk-border-circle"}
-                style={{ width: "2rem" }}
-              />
-            </Link>
+        <>
+          <Link
+            as={NextLink}
+            href={"https://en.gravatar.com/connect"}
+            target={"_blank"}
+          >
+            <img
+              src={gravatar.url(session?.user?.email)}
+              style={{ width: "2rem", borderRadius: "1rem" }}
+            />
+          </Link>
+          <div>Hello, {session?.user?.name}!</div>
+          <div className={"uk-text-small uk-text-muted"}>
+            Site: {session?.user?.sites?.[0]?._id}
           </div>
-          <div className={"uk-navbar-item"}>
-            <div>
-              <div>Hello, {session?.user?.name}!</div>
-              <div className={"uk-text-small uk-text-muted"}>
-                Site: {session?.user?.sites?.[0]?._id}
-              </div>
-            </div>
-          </div>
-        </div>
+        </>
       ) : (
         <Link
+          as={NextLink}
           href={"/"}
           title={
             "NextJS Website Analytics Dashboard | Stupendous Web | If you want to build community, build stupendous software"
           }
-          className={"uk-navbar-item uk-logo"}
         >
-          Stupendous Analytics
+          <Heading pt={4}>Stupendous Analytics</Heading>
         </Link>
       )}
-      <div className={"uk-navbar-right"}>
+      <Box ml={"auto"}>
         {!!session?.user ? (
           <>
             {router.pathname === "/app/dashboard" && <Filters />}
-            <div className={"uk-navbar-item"}>
+            <>
               {router.pathname !== "/app/dashboard" && (
                 <Link
+                  as={NextLink}
                   href={"/app/dashboard"}
                   className={"uk-button uk-button-primary uk-margin-right"}
                 >
-                  Dashboard
+                  <Button colorScheme={"primary"} mr={4}>
+                    Dashboard
+                  </Button>
                 </Link>
               )}
-              <div
-                className={"uk-button uk-button-primary"}
+              <Button
+                colorScheme={"primary"}
                 onClick={() => signOut({ callbackUrl: "/" })}
               >
                 Logout
-              </div>
-            </div>
+              </Button>
+            </>
           </>
         ) : (
-          <div className={"uk-navbar-item"}>
+          <>
             <Link
+              as={NextLink}
               href={"/register"}
               title={
                 "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
               }
-              className={"uk-button uk-button-primary uk-margin-right"}
             >
-              Join for FREE!
+              <Button colorScheme={"primary"} size={"sm"} mt={4} mr={4}>
+                Join for FREE!
+              </Button>
             </Link>
             <Link
               href={"/login"}
               title={
                 "Login | NextJS Website Analytics Dashboard | Stupendous Web"
               }
-              className={"uk-button uk-button-primary"}
             >
-              Login
+              <Button colorScheme={"gray"} size={"sm"} mt={4}>
+                Login
+              </Button>
             </Link>
-          </div>
+          </>
         )}
-      </div>
-    </nav>
+      </Box>
+    </Flex>
   );
 }

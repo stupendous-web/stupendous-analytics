@@ -1,8 +1,10 @@
-import uikit from "uikit";
-import "../styles/uikit/uikit.css";
+import uikit from "uikit"; // TODO: Remove
 import { Provider } from "../lib/context";
 import { SessionProvider } from "next-auth/react";
 import "remixicon/fonts/remixicon.css";
+import { ChakraBaseProvider } from "@chakra-ui/react"; // TODO: Remove
+
+import theme from "../utils/chakraHelper";
 
 export default function MyApp({
   Component,
@@ -18,10 +20,12 @@ export default function MyApp({
   );
 
   return (
-    <SessionProvider session={session}>
-      <Provider>
-        <Component {...pageProps} />
-      </Provider>
-    </SessionProvider>
+    <ChakraBaseProvider theme={theme}>
+      <SessionProvider session={session}>
+        <Provider>
+          <Component {...pageProps} />
+        </Provider>
+      </SessionProvider>
+    </ChakraBaseProvider>
   );
 }
