@@ -44,20 +44,21 @@ export default function Navigation() {
           <Heading m={0}>Stupendous Analytics</Heading>
         </Link>
       )}
-      <Box ml={"auto"}>
+      <Flex align={"center"} ml={"auto"}>
         {!!session?.user ? (
           <>
             {router.pathname === "/app/dashboard" && <Filters />}
             <>
               {router.pathname !== "/app/dashboard" && (
                 <Link as={NextLink} href={"/app/dashboard"}>
-                  <Button colorScheme={"primary"} my={0} mr={4}>
+                  <Button colorScheme={"primary"} size={"sm"} my={0} mr={4}>
                     Dashboard
                   </Button>
                 </Link>
               )}
               <Button
                 colorScheme={"primary"}
+                size={"sm"}
                 my={0}
                 onClick={() => signOut({ callbackUrl: "/" })}
               >
@@ -90,7 +91,7 @@ export default function Navigation() {
             </Link>
           </>
         )}
-      </Box>
+      </Flex>
     </Flex>
   );
 }

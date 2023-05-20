@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useGlobal } from "../lib/context";
+
+import { DateRangePicker } from "react-date-range";
+import { RiCalendarFill } from "react-icons/ri";
+import { Box, Text, Icon, Select, Flex } from "@chakra-ui/react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import { DateRangePicker } from "react-date-range";
-import { Box, Flex } from "@chakra-ui/react";
 
 export default function Filters() {
   const [isShowingDateRange, setIsShowingDateRange] = useState(false);
@@ -32,19 +34,26 @@ export default function Filters() {
 
   return (
     <>
-      <a
-        className={"uk-flex uk-flex-middle uk-height-1-1"}
+      <Flex
+        align={"center"}
+        minW={"fit-content"}
+        color={"primary.500"}
+        cursor={"pointer"}
+        mr={4}
         onClick={() => setIsShowingDateRange(!isShowingDateRange)}
       >
         Date Range&nbsp;
-        <i className={"ri-calendar-fill"} />
-      </a>
+        <Icon as={RiCalendarFill} />
+      </Flex>
       {isShowingDateRange && (
-        <div
-          className={
-            "uk-background-muted uk-box-shadow-small uk-position-absolute uk-padding"
-          }
-          style={{ borderRadius: ".5rem", top: 43, right: 0 }}
+        <Box
+          bg={"white"}
+          boxShadow={"md"}
+          position={"absolute"}
+          p={2}
+          borderRadius={"sm"}
+          top={"80px"}
+          right={8}
         >
           <DateRangePicker
             ranges={[
@@ -57,22 +66,25 @@ export default function Filters() {
             ]}
             onChange={(ranges) => handleSelect(ranges?.selection)}
           />
-          <p className={"uk-text-right uk-text-bold"}>
-            <a
-              onClick={() => {
-                setIsLoading(true);
-                setIsShowingDateRange(false);
-                setStartDate(localStartDate);
-                setEndDate(localEndDate);
-              }}
-            >
-              Apply
-            </a>
-          </p>
-        </div>
+          <Text
+            color={"primary.500"}
+            fontWeight={"bold"}
+            align={"left"}
+            my={2}
+            cursor={"pointer"}
+            onClick={() => {
+              setIsLoading(true);
+              setIsShowingDateRange(false);
+              setStartDate(localStartDate);
+              setEndDate(localEndDate);
+            }}
+          >
+            Apply
+          </Text>
+        </Box>
       )}
-      <select
-        className={"uk-select"}
+      <Select
+        mr={4}
         onChange={(event) => setHost(event.target.value)}
         value={host}
       >
@@ -82,7 +94,7 @@ export default function Filters() {
             {hostOption[0]}
           </option>
         ))}
-      </select>
+      </Select>
     </>
   );
 }
