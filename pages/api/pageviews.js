@@ -5,6 +5,7 @@ const cors = Cors({
   methods: ["POST", "GET", "HEAD"],
 });
 
+// Cors
 function runMiddleware(req, res, fn) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result) => {
