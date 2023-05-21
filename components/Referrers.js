@@ -8,12 +8,12 @@ import { syndication } from "../utils/syndication";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import {
   Box,
-  Flex,
   Heading,
   Icon,
   Popover,
   PopoverContent,
   PopoverTrigger,
+  SimpleGrid,
   Table,
   TableContainer,
   Tbody,
@@ -52,46 +52,8 @@ export default function Referrers() {
   return (
     <>
       <Heading id={"sources"}>Sources</Heading>
-      <Flex>
-        <Box w={"50%"}>
-          <TableContainer>
-            <Table size={"sm"}>
-              <Thead>
-                <Tr>
-                  <Th>Location</Th>
-                  <Th>Sessions</Th>
-                  <Th>Pageviews</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {rows?.map((row) => {
-                  return (
-                    <Tr key={row.hsot}>
-                      <Td>
-                        {row.host}{" "}
-                        {row.fullReferrers.length > 1 && (
-                          <Popover>
-                            <PopoverTrigger>
-                              <Icon as={RiArrowDropDownFill} />
-                            </PopoverTrigger>
-                            <PopoverContent>
-                              {row.fullReferrers.map((item) => (
-                                <li key={item[0]}>{item[0]}</li>
-                              ))}
-                            </PopoverContent>
-                          </Popover>
-                        )}
-                      </Td>
-                      <Td>{row.sessions}</Td>
-                      <Td>{row.pageviews}</Td>
-                    </Tr>
-                  );
-                })}
-              </Tbody>
-            </Table>
-          </TableContainer>
-        </Box>
-        <Box w={"25%"} px={4}>
+      <SimpleGrid columns={2} spacing={4} w={"66.66%"} mb={4}>
+        <Box>
           <Text>Pageviews per Type</Text>
           <Chart
             type={"doughnut"}
@@ -133,7 +95,7 @@ export default function Referrers() {
             }}
           />
         </Box>
-        <Box w={"25%"} px={4}>
+        <Box>
           <Text>Sessions per Location</Text>
           <Chart
             type={"doughnut"}
@@ -155,7 +117,43 @@ export default function Referrers() {
             }}
           />
         </Box>
-      </Flex>
+      </SimpleGrid>
+      <TableContainer>
+        <Table size={"sm"}>
+          <Thead>
+            <Tr>
+              <Th>Location</Th>
+              <Th>Sessions</Th>
+              <Th>Pageviews</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {rows?.map((row) => {
+              return (
+                <Tr key={row.hsot}>
+                  <Td>
+                    {row.host}{" "}
+                    {row.fullReferrers.length > 1 && (
+                      <Popover>
+                        <PopoverTrigger>
+                          <Icon as={RiArrowDropDownFill} />
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          {row.fullReferrers.map((item) => (
+                            <li key={item[0]}>{item[0]}</li>
+                          ))}
+                        </PopoverContent>
+                      </Popover>
+                    )}
+                  </Td>
+                  <Td>{row.sessions}</Td>
+                  <Td>{row.pageviews}</Td>
+                </Tr>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

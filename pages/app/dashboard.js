@@ -9,7 +9,7 @@ import Overview from "../../components/Overview";
 import Referrers from "../../components/Referrers";
 import Paths from "../../components/Paths";
 import Screens from "../../components/Screens";
-import { Card, Container, Flex } from "@chakra-ui/react";
+import { Card, Container, SimpleGrid } from "@chakra-ui/react";
 // import Hours from "../../components/Hours";
 
 export default function Dashboard() {
@@ -58,29 +58,22 @@ export default function Dashboard() {
           Dashboard | NextJS Website Analytics Dashboard | Stupendous Web
         </title>
       </Head>
-      <Container maxW={"full"} py={4}>
-        <Flex>
-          <Card h={"350px"} w={"800px"} p={4} mr={4}>
-            <Overview />
-          </Card>
-          <Card w={"900px"} p={4}>
+      <Container maxW={"container.xl"} py={4}>
+        <Card h={"350px"} w={"100%"} p={4} mb={4}>
+          <Overview />
+        </Card>
+        <SimpleGrid columns={2} spacing={4}>
+          <Card p={4}>
             <Referrers />
           </Card>
-        </Flex>
+          <Card p={4}>
+            <Paths />
+          </Card>
+        </SimpleGrid>
       </Container>
       {/*<div className={"uk-section uk-section-small"}>*/}
       {/*  <div className={"uk-container uk-container-expand"}>*/}
       {/*    <div className={"uk-grid-match"} data-uk-grid={""}>*/}
-      {/*      <div className={"uk-width-1-2"}>*/}
-      {/*        <div className={"uk-card uk-card-default uk-card-body"}>*/}
-      {/*          <Overview />*/}
-      {/*        </div>*/}
-      {/*      </div>*/}
-      {/*      <div className={"uk-width-auto"}>*/}
-      {/*        <div className={"uk-card uk-card-default uk-card-body"}>*/}
-      {/*          <Referrers />*/}
-      {/*        </div>*/}
-      {/*      </div>*/}
       {/*      <div className={"uk-width-auto"}>*/}
       {/*        <div className={"uk-card uk-card-default uk-card-body"}>*/}
       {/*          <Paths />*/}
