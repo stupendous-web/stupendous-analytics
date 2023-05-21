@@ -36,8 +36,7 @@
 //
 //     return null;
 // };
-
-const axios = require("axios");
+const { axios } = require("axios");
 
 const data = {
   site: new URL(window.location.href).searchParams.get("site"),
