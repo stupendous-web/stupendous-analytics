@@ -52,8 +52,8 @@ export default function Referrers() {
   return (
     <>
       <Heading id={"sources"}>Sources</Heading>
-      <Flex h={"350px"} overflowY={"auto"}>
-        <Box w={"50%"} className={"uk-width-auto"}>
+      <Flex>
+        <Box w={"50%"}>
           <TableContainer>
             <Table size={"sm"}>
               <Thead>
@@ -75,13 +75,9 @@ export default function Referrers() {
                               <Icon as={RiArrowDropDownFill} />
                             </PopoverTrigger>
                             <PopoverContent>
-                              {row.fullReferrers.length > 1 && (
-                                <div data-uk-dropdown={"mode: click"}>
-                                  {row.fullReferrers.map((item) => (
-                                    <div key={item[0]}>{item[0]}</div>
-                                  ))}
-                                </div>
-                              )}
+                              {row.fullReferrers.map((item) => (
+                                <li key={item[0]}>{item[0]}</li>
+                              ))}
                             </PopoverContent>
                           </Popover>
                         )}
