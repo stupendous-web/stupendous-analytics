@@ -5,6 +5,24 @@ import { groupBy } from "../utils/helpers";
 import { searchEngines } from "../utils/searchEngines";
 import { socialMedia } from "../utils/socialMedia";
 import { syndication } from "../utils/syndication";
+import { RiArrowDropDownFill } from "react-icons/ri";
+import {
+  Box,
+  Heading,
+  Icon,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  SimpleGrid,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 
 export default function Referrers() {
   const { filteredPageviews, chartColors } = useGlobal();
@@ -33,56 +51,10 @@ export default function Referrers() {
 
   return (
     <>
-      <h2 id={"sources"}>Sources</h2>
-      <div data-uk-grid={""}>
-        <div className={"uk-width-auto"}>
-          <table
-            className={
-              "uk-table uk-table-divider uk-table-hover uk-table-small uk-table-responsive"
-            }
-          >
-            <thead>
-              <tr>
-                <th>Location</th>
-                <th>Sessions</th>
-                <th>Pageviews</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows?.map((row) => {
-                return (
-                  <tr key={row.hsot}>
-                    <td>
-                      <div className={"uk-inline"}>
-                        <div>
-                          {row.host}{" "}
-                          {row.fullReferrers.length > 1 && (
-                            <a>
-                              <i className={"ri-arrow-drop-down-fill"} />
-                            </a>
-                          )}
-                        </div>
-                        {row.fullReferrers.length > 1 && (
-                          <div data-uk-dropdown={"mode: click"}>
-                            {row.fullReferrers.map((item) => (
-                              <div key={item[0]}>{item[0]}</div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </td>
-                    <td>{row.sessions}</td>
-                    <td>{row.pageviews}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <div className={"uk-width-auto"}>
-          <p className={"uk-text-bold uk-margin-small-top"}>
-            Pageviews per Type
-          </p>
+      <Heading id={"sources"}>Sources</Heading>
+      <SimpleGrid columns={2} spacing={4} w={"66.66%"} mb={4}>
+        <Box>
+          <Text>Pageviews per Type</Text>
           <Chart
             type={"doughnut"}
             data={{
@@ -122,11 +94,9 @@ export default function Referrers() {
               },
             }}
           />
-        </div>
-        <div className={"uk-width-auto"}>
-          <p className={"uk-text-bold uk-margin-small-top"}>
-            Sessions per Location
-          </p>
+        </Box>
+        <Box>
+          <Text>Sessions per Location</Text>
           <Chart
             type={"doughnut"}
             data={{
@@ -146,8 +116,44 @@ export default function Referrers() {
               },
             }}
           />
-        </div>
-      </div>
+        </Box>
+      </SimpleGrid>
+      <TableContainer>
+        <Table size={"sm"}>
+          <Thead>
+            <Tr>
+              <Th>Location</Th>
+              <Th>Sessions</Th>
+              <Th>Pageviews</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {rows?.map((row) => {
+              return (
+                <Tr key={row.hsot}>
+                  <Td>
+                    {row.host}{" "}
+                    {row.fullReferrers.length > 1 && (
+                      <Popover>
+                        <PopoverTrigger>
+                          <Icon as={RiArrowDropDownFill} />
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          {row.fullReferrers.map((item) => (
+                            <li key={item[0]}>{item[0]}</li>
+                          ))}
+                        </PopoverContent>
+                      </Popover>
+                    )}
+                  </Td>
+                  <Td>{row.sessions}</Td>
+                  <Td>{row.pageviews}</Td>
+                </Tr>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

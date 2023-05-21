@@ -1,11 +1,18 @@
 import Head from "next/head";
-import Link from "next/link";
+import NextLink from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
-import Navigation from "../components/Navigation";
-
 import screenshot from "../images/screenshot.png";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  Link,
+  Button,
+} from "@chakra-ui/react";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -26,105 +33,97 @@ export default function Home() {
         />
         <meta property={"og:type"} content={"website"} />
       </Head>
-      <Navigation />
-      <div style={{ overflowY: "auto" }}>
-        <div className={"uk-container uk-container-large"}>
-          <div
-            className={"uk-child-width-1-2@s uk-flex-middle"}
-            data-uk-grid={""}
-            style={{ height: "calc(100vh - 4rem)" }}
-          >
-            <div>
-              <p className={"uk-text-bold"}>
-                NextJS Website Analytics Dashboard
-              </p>
-              <p>
-                Finally an easy-to-install web analytics tracker and dashboard
-                for NextJS apps. Getting started with Stupendous Web Analytics
-                is easy. Install and add two simple lines of code to your
-                project. Need help? Read the{" "}
+      <Container h={"100%"} maxW={"container.xl"}>
+        <Flex h={"100%"} direction={["column", "row"]} align={"center"} py={8}>
+          <Box>
+            <Heading as={"h1"}>NextJS Website Analytics Dashboard</Heading>
+            <Text>
+              Finally an easy-to-install web analytics tracker and dashboard for
+              NextJS apps. Getting started with Stupendous Web Analytics is
+              easy. Install and add two simple lines of code to your project.
+              Need help? Read the{" "}
+              <Link
+                as={NextLink}
+                href={
+                  "https://github.com/stupendous-web/stupendous-analytics-next"
+                }
+              >
+                documentation
+              </Link>{" "}
+              or visit{" "}
+              <Link
+                as={NextLink}
+                href={"https://stupendousweb.com"}
+                title={"Web App Development Services | Stupendous Web"}
+              >
+                Stupendous Web
+              </Link>{" "}
+              for more.
+            </Text>
+            {session?.user ? (
+              <>
                 <Link
-                  href={
-                    "https://github.com/stupendous-web/stupendous-analytics-next"
+                  as={NextLink}
+                  href={"/app/dashboard"}
+                  title={
+                    "Dashboard | NextJS Website Analytics Dashboard | Stupendous Web"
                   }
                 >
-                  documentation
-                </Link>{" "}
-                or visit{" "}
-                <a
-                  href={"https://stupendousweb.com"}
-                  title={"Web App Development Services | Stupendous Web"}
-                >
-                  Stupendous Web
-                </a>{" "}
-                for more.
-              </p>
-              <p>
-                {session?.user ? (
-                  <>
-                    <Link
-                      href={"/app/dashboard"}
-                      className={"uk-button uk-button-primary uk-margin-right"}
-                      title={
-                        "Dashboard | NextJS Website Analytics Dashboard | Stupendous Web"
-                      }
-                    >
-                      Dashboard
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      href={"/register"}
-                      className={"uk-button uk-button-primary uk-margin-right"}
-                      title={
-                        "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
-                      }
-                    >
-                      Join for FREE!
-                    </Link>
-                    <Link
-                      href={"/login"}
-                      className={"uk-button uk-button-default uk-margin-right"}
-                      title={
-                        "Login | NextJS Website Analytics Dashboard | Stupendous Web"
-                      }
-                    >
-                      Login
-                    </Link>
-                  </>
-                )}
-                <Link
-                  href={
-                    "https://github.com/stupendous-web/stupendous-analytics-next"
-                  }
-                  className={"uk-button uk-button-default"}
-                >
-                  Docs
+                  <Button colorScheme={"primary"} mr={4}>
+                    Dashboard
+                  </Button>{" "}
                 </Link>
-              </p>
-              <p className={"uk-text-small"}>
-                &copy; Copyright 2022{" "}
-                <a
-                  href={"https://stupendousweb.com"}
-                  title={"Web App Development Services | Stupendous Web"}
+              </>
+            ) : (
+              <>
+                <Link
+                  href={"/register"}
+                  title={
+                    "Join for FREE! | NextJS Website Analytics Dashboard | Stupendous Web"
+                  }
                 >
-                  Stupendous Web
-                </a>
-                .
-              </p>
-            </div>
-            <div>
-              <Image
-                src={screenshot}
-                alt={"NextJS Web Analytics Dashboard"}
-                className={"uk-padding uk-padding-remove uk-box-shadow-small"}
-                style={{ borderRadius: ".5rem" }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+                  <Button colorScheme={"primary"} mr={4}>
+                    Join for FREE!
+                  </Button>
+                </Link>
+                <Link
+                  as={NextLink}
+                  href={"/login"}
+                  title={
+                    "Login | NextJS Website Analytics Dashboard | Stupendous Web"
+                  }
+                >
+                  <Button colorScheme={"gray"} mr={4}>
+                    Login
+                  </Button>
+                </Link>
+              </>
+            )}
+            <Link
+              as={NextLink}
+              href={
+                "https://github.com/stupendous-web/stupendous-analytics-next"
+              }
+            >
+              <Button colorScheme={"gray"}>Docs</Button>
+            </Link>
+            <Text fontSize={"sm"} className={"uk-text-small"}>
+              &copy; Copyright 2022{" "}
+              <Link
+                as={NextLink}
+                href={"https://stupendousweb.com"}
+                title={"Web App Development Services | Stupendous Web"}
+              >
+                Stupendous Web
+              </Link>
+              .
+            </Text>
+          </Box>
+          <Box boxShadow={"md"} borderRadius={"2xl"} m={[null, 8]}>
+            <Image src={screenshot} alt={"NextJS Web Analytics Dashboard"} />
+          </Box>
+        </Flex>
+      </Container>
     </>
   );
 }

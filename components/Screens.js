@@ -1,8 +1,23 @@
 import { useGlobal } from "../lib/context";
-import { Chart } from "react-chartjs-2";
+import {
+  RiSmartphoneFill,
+  RiComputerFill,
+  RiPercentFill,
+} from "react-icons/ri";
+import {
+  Heading,
+  Icon,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 
 export default function Screens() {
-  const { filteredPageviews, chartColors } = useGlobal();
+  const { filteredPageviews } = useGlobal();
 
   const portrait = filteredPageviews?.filter(
     (pageview) => pageview?.height > pageview?.width
@@ -16,70 +31,40 @@ export default function Screens() {
 
   return (
     <>
-      <h2 id={"screens"}>Screens</h2>
-      <div data-uk-grid={""}>
-        <div className={"uk-width-auto"}>
-          <table
-            className={
-              "uk-table uk-table-divider uk-table-hover uk-table-small uk-table-responsive"
-            }
-          >
-            <thead>
-              <tr>
-                <th>Size</th>
-                <th>Pageviews</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <i className={"ri-smartphone-fill uk-margin-right"} />
-                  &nbsp; Portrait
-                </td>
-                <td>{portrait}</td>
-              </tr>
-              <tr>
-                <td>
-                  <i className={"ri-computer-fill uk-margin-right"} />
-                  &nbsp; Landscape
-                </td>
-                <td>{landscape}</td>
-              </tr>
-              <tr>
-                <td>
-                  <i className={"ri-percent-fill uk-margin-right"} />
-                  &nbsp; Square
-                </td>
-                <td>{square}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className={"uk-width-auto"}>
-          <p className={"uk-text-bold uk-margin-small-top"}>
-            Pageviews per Screen
-          </p>
-          <Chart
-            type={"doughnut"}
-            data={{
-              labels: ["Portrait", "Landscape", "Square"],
-              datasets: [
-                {
-                  data: [portrait, landscape, square],
-                  backgroundColor: chartColors,
-                },
-              ],
-            }}
-            options={{
-              plugins: {
-                legend: {
-                  display: false,
-                },
-              },
-            }}
-          />
-        </div>
-      </div>
+      <Heading id={"screens"}>Screens</Heading>
+      <TableContainer>
+        <Table size={"sm"}>
+          <Thead>
+            <Tr>
+              <Th>Size</Th>
+              <Th>Pageviews</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>
+                <Icon as={RiSmartphoneFill} />
+                &nbsp; Portrait
+              </Td>
+              <Td>{portrait}</Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <Icon as={RiComputerFill} />
+                &nbsp; Landscape
+              </Td>
+              <Td>{landscape}</Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <Icon as={RiPercentFill} />
+                &nbsp; Square
+              </Td>
+              <Td>{square}</Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

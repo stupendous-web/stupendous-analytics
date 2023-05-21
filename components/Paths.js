@@ -2,6 +2,19 @@ import { useEffect, useState } from "react";
 import { useGlobal } from "../lib/context";
 import { Chart } from "react-chartjs-2";
 import { groupBy } from "../utils/helpers";
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 
 export default function Paths() {
   const { filteredPageviews, chartColors } = useGlobal();
@@ -24,38 +37,11 @@ export default function Paths() {
 
   return (
     <>
-      <h2 id={"pages"}>Pages</h2>
-      <div data-uk-grid={""}>
-        <div className={"uk-width-auto"}>
-          <table
-            className={
-              "uk-table uk-table-divider uk-table-hover uk-table-small uk-table-responsive"
-            }
-          >
-            <thead>
-              <tr>
-                <th>Page</th>
-                <th>Sessions</th>
-                <th>Pageviews</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows?.map((row, key) => {
-                return (
-                  <tr key={key}>
-                    <td>{row?.path}</td>
-                    <td>{row?.sessions}</td>
-                    <td>{row?.pageviews}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <div className={"uk-width-auto"}>
-          <p className={"uk-text-bold uk-margin-small-top"}>
-            Sessions per Page
-          </p>
+      <Heading id={"pages"}>Pages</Heading>
+
+      <SimpleGrid columns={2} spacing={4} w={"66.66%"} mb={4}>
+        <Box>
+          <Text>Sessions per Page</Text>
           <Chart
             type={"doughnut"}
             data={{
@@ -75,11 +61,9 @@ export default function Paths() {
               },
             }}
           />
-        </div>
-        <div className={"uk-width-auto"}>
-          <p className={"uk-text-bold uk-margin-small-top"}>
-            Pageviews per Page
-          </p>
+        </Box>
+        <Box>
+          <Text>Pageviews per Page</Text>
           <Chart
             type={"doughnut"}
             data={{
@@ -99,8 +83,30 @@ export default function Paths() {
               },
             }}
           />
-        </div>
-      </div>
+        </Box>
+      </SimpleGrid>
+      <TableContainer>
+        <Table size={"sm"}>
+          <Thead>
+            <Tr>
+              <Th>Page</Th>
+              <Th>Sessions</Th>
+              <Th>Pageviews</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {rows?.map((row, key) => {
+              return (
+                <Tr key={key}>
+                  <Td>{row?.path}</Td>
+                  <Td>{row?.sessions}</Td>
+                  <Td>{row?.pageviews}</Td>
+                </Tr>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </TableContainer>
     </>
   );
 }
