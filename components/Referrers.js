@@ -5,14 +5,9 @@ import { groupBy } from "../utils/helpers";
 import { searchEngines } from "../utils/searchEngines";
 import { socialMedia } from "../utils/socialMedia";
 import { syndication } from "../utils/syndication";
-import { RiArrowDropDownFill } from "react-icons/ri";
 import {
   Box,
   Heading,
-  Icon,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   SimpleGrid,
   Table,
   TableContainer,
@@ -131,21 +126,7 @@ export default function Referrers() {
             {rows?.map((row) => {
               return (
                 <Tr key={row.hsot}>
-                  <Td>
-                    {row.host}{" "}
-                    {row.fullReferrers.length > 1 && (
-                      <Popover>
-                        <PopoverTrigger>
-                          <Icon as={RiArrowDropDownFill} />
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          {row.fullReferrers.map((item) => (
-                            <li key={item[0]}>{item[0]}</li>
-                          ))}
-                        </PopoverContent>
-                      </Popover>
-                    )}
-                  </Td>
+                  <Td>{row.host}</Td>
                   <Td>{row.sessions}</Td>
                   <Td>{row.pageviews}</Td>
                 </Tr>

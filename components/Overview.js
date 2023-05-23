@@ -43,7 +43,7 @@ export default function Overview() {
           </Text>
         </Box>
       </Flex>
-      <Box>
+      <Box h={"100%"}>
         <Chart
           type={"line"}
           data={{
@@ -78,6 +78,7 @@ export default function Overview() {
                 },
               },
             },
+            responsive: true,
             maintainAspectRatio: false,
           }}
         />
