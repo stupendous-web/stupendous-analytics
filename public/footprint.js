@@ -37,7 +37,7 @@
 //     return null;
 // };
 // const { axios } = require("axios");
-import axios from "axios";
+import axios from "https://unpkg.com/axios/dist/axios.min.js";
 
 const data = {
   site: site,
