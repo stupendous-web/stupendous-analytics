@@ -37,6 +37,7 @@
 //     return null;
 // };
 // const { axios } = require("axios");
+import axios from "axios";
 
 const data = {
   site: site,
