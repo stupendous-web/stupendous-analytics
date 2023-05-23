@@ -37,12 +37,17 @@
 //     return null;
 // };
 // const { axios } = require("axios");
-import axios from "axios";
 
 const data = {
-  site: new URL(window.location.href).searchParams.get("site"),
+  site: site,
+  hostname: document.location.hostname,
+  path: document.location.pathname,
+  // host: document.location.hostname || "Direct",
+  referrer: document.referrer,
+  height: window.innerHeight,
+  width: window.innerWidth,
+  localTimestamp: new Date(),
+  // session: session,
 };
 
-axios
-  .post("/api/pageviews", data)
-  .catch((error) => console.log("Stupendous Analytics Error: ", error));
+console.log(data);
