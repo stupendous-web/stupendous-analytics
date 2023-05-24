@@ -1,7 +1,6 @@
 // const react = require("react");
 // const extractDomain = require("extract-domain");
 // const { getCookie, hasCookie, setCookie } = require("cookies-next");
-// const { v4: uuidv4 } = require("uuid");
 // const axios = require("axios");
 //
 // module.exports = function StupendousAnalytics({ site }) {
@@ -36,14 +35,16 @@
 //
 //     return null;
 // };
-// const { axios } = require("axios");
-import axios from "https://unpkg.com/axios/dist/axios.min.js";
+
+const site = new URLSearchParams(document.currentScript.src.split("?")[1]).get(
+  "site"
+);
 
 const data = {
-  site: site,
+  site,
   hostname: document.location.hostname,
   path: document.location.pathname,
-  // host: document.location.hostname || "Direct",
+  host: document.location.hostname || "Direct",
   referrer: document.referrer,
   height: window.innerHeight,
   width: window.innerWidth,
@@ -52,3 +53,11 @@ const data = {
 };
 
 console.log(data);
+
+window.addEventListener("locationchange", function () {
+  console.log("location changed!");
+});
+
+//   axios
+//     .post("/api/pageviews", data)
+//     .catch((error) => console.log("Stupendous Analytics Error:", error));

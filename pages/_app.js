@@ -11,7 +11,7 @@ export default function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }) {
-  console.log("%c 🦸 Visit stupendousweb.com for more!", "color: #d02670");
+  console.log("%c🦸 Visit stupendousweb.com for more!", "color: #d02670");
 
   return (
     <ChakraBaseProvider theme={theme}>
